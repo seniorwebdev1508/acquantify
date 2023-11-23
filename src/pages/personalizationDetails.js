@@ -5,9 +5,9 @@ import "@fontsource/space-grotesk";
 
 const PersonalizationDetails = () => {
   return (
-    <>
+    <div className="bg-[url('/public/svg/personalization_details.svg')] w-full h-screen bg-cover bg-no-repeat">
       <Header />
-      <div className="backdrop-blur-md px-[150px] pt-10 text-white mt-[40px]">
+      <div className="px-[150px] pt-10 text-white mt-[40px]">
         <div className="text-center font-space-grotesk text-[48px] font-bold">
           Personalization Details
         </div>
@@ -312,7 +312,7 @@ const PersonalizationDetails = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

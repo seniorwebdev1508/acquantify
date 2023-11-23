@@ -5,9 +5,9 @@ import "@fontsource/space-grotesk";
 
 const PreviousAcquanitifications = () => {
   return (
-    <>
+    <div className="bg-[url('/public/svg/previous_acquantifications.svg')] w-full h-screen bg-cover bg-no-repeat">
       <Header />
-      <div className="bg-[#100F2E] backdrop-blur-md px-[150px] text-white">
+      <div className="px-[150px] text-white">
         <div className="mt-[107px] font-space-grotesk text-[48px] text-white font-bold text-center">
           Previous Acquanitifications
         </div>
@@ -156,7 +156,7 @@ const PreviousAcquanitifications = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

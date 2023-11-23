@@ -19,9 +19,9 @@ function App() {
       {/* <AcquantifyCustom/> */}
       {/* <PersonalizationDetails/> */}
       {/* <Success/> */}
-      {/* <PreviousAcquanitifications/> */}
+      <PreviousAcquanitifications/>
       {/* <BuyCredits/> */}
-      <Login/>
+      {/* <Login/> */}
       {/* <ForgotPwd/> */}
       {/* <SignUp/> */}
     </div>

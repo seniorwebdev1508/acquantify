@@ -10,10 +10,6 @@ import CompTitle from "./compTitle";
 // import { createUserWithEmailAndPassword,signInWithPopup, signOut } from "firebase/auth";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  console.log(auth?.currentUser?.email);
-
   return (
     <div className="bg-[url('/public/svg/log_in.svg')] w-full h-screen bg-cover bg-no-repeat">
       <Header />

@@ -5,9 +5,9 @@ import '@fontsource/space-grotesk';
 
 const PersonalizationPreferences = () => {
   return (
-    <>
+    <div className="bg-[url('/public/svg/personalization_preferences.svg')] w-full h-screen bg-cover bg-no-repeat">
       <Header />
-      <div className="bg-[#100F2E] backdrop-blur-md px-[150px] pt-10 text-white">
+      <div className="px-[150px] pt-10 text-white">
         <div className="text-center text-5xl font-space-grotesk font-bold">Personalization Preferences</div>
 
         <div className="mt-[100px]">
@@ -288,7 +288,7 @@ const PersonalizationPreferences = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
