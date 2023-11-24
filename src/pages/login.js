@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
@@ -6,8 +7,8 @@ import CompButton from "./compButton";
 import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
-// import { auth, googleProvider } from '../config/firebase';
-// import { createUserWithEmailAndPassword,signInWithPopup, signOut } from "firebase/auth";
+import { auth, googleProvider } from '../config/firebase';
+import { createUserWithEmailAndPassword,signInWithPopup, signOut } from "firebase/auth";
 
 const Login = () => {
   return (
@@ -69,7 +70,7 @@ const Login = () => {
               Forgot Password?
             </div>
             <div className="mt-[30px] flex justify-center font-poppins text-[18px] font-normal">
-              Don't have an account?<span className="text-[#3BA8CE]">&nbsp;Sign up now!</span>
+              Don't have an account?<Link to="/signup"><span className="text-[#3BA8CE]">&nbsp;Sign up now!</span></Link>
             </div>
           </div>
         </div>

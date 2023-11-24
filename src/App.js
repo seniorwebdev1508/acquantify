@@ -1,4 +1,5 @@
 import './App.css';
+import { Routes, Route } from "react-router-dom";
 
 import ImportSheet from './pages/importSheet';
 import PersonalizationPreferences from './pages/personalizationPreferences';
@@ -19,11 +20,16 @@ function App() {
       {/* <AcquantifyCustom/> */}
       {/* <PersonalizationDetails/> */}
       {/* <Success/> */}
-      <PreviousAcquanitifications/>
+      {/* <PreviousAcquanitifications/> */}
       {/* <BuyCredits/> */}
       {/* <Login/> */}
       {/* <ForgotPwd/> */}
       {/* <SignUp/> */}
+      <Routes>
+        <Route path="/" element={<Login/>}></Route>
+        <Route path="/fpwd" element={<ForgotPwd/>}></Route>
+        <Route path="/signup" element={<SignUp/>}></Route>
+      </Routes>
     </div>
   );
 }
