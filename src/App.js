@@ -23,12 +23,19 @@ function App() {
       {/* <PersonalizationDetails scaleFactor={Math.min(width/1440, height/960)}/> */}
       {/* <Success scaleFactor={Math.min(width/1440, height/960)}/> */}
       {/* <PreviousAcquanitifications scaleFactor={Math.min(width/1440, height/960)}/> */}
-      <BuyCredits scaleFactor={Math.min(width/1440, height/960)}/>
-      {/* <Routes>
+      {/* <BuyCredits scaleFactor={Math.min(width/1440, height/960)}/> */}
+      <Routes>
         <Route path="/" element={<Login scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
-        <Route path="/fpwd" element={<ForgotPwd scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
-        <Route path="/signup" element={<SignUp scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
-      </Routes> */}
+        <Route path="/fp" element={<ForgotPwd scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/su" element={<SignUp scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/is" element={<ImportSheet scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/pp" element={<PersonalizationPreferences scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/ac" element={<AcquantifyCustom scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/pd" element={<PersonalizationDetails scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/ss" element={<Success scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/pa" element={<PreviousAcquanitifications scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+        <Route path="/bc" element={<BuyCredits scaleFactor={Math.min(width/1440, height/960)}/>}></Route>
+      </Routes>
     </div>
   );
 }
