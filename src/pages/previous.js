@@ -2,36 +2,95 @@ import React from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
+import CompButton from "./compButton";
+import CompInput from "./compInput";
+import CompTitle from "./compTitle";
 
-const PreviousAcquanitifications = () => {
+const PreviousAcquanitifications = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
     <div className="bg-[url('/public/svg/previous_acquantifications.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="px-[150px] text-white">
-        <div className="mt-[107px] font-space-grotesk text-[48px] text-white font-bold text-center">
-          Previous Acquanitifications
-        </div>
-        <div className="mt-[100px]">
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white"
+        style={{
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+        }}
+      >
+        <CompTitle
+          title="Previous Acquantifications"
+          scaleFactor={scaleFactor}
+        ></CompTitle>
+        <div style={{ marginTop: `${100 * scaleFactor}px` }}>
           <div className="relative overflow-x-auto">
-            <table className="w-[1140px] text-left rtl:text-right text-white mx-auto">
-              <thead className="uppercase bg-[#FFFFFF0D] font-space-grotesk text-[15px] font-bold tracking-[1.5px] h-[70px]">
+            <table
+              className="text-left rtl:text-right text-white mx-auto"
+              style={{ width: `${1140 * scaleFactor}px` }}
+            >
+              <thead
+                className="uppercase bg-[#FFFFFF0D] font-space-grotesk font-bold"
+                style={{
+                  fontSize: `${15 * scaleFactor}px`,
+                  letterSpacing: `${1.5 * scaleFactor}px`,
+                  height: `${70 * scaleFactor}px`,
+                }}
+              >
                 <tr>
-                  <th scope="col" className="px-6 py-3">
+                  <th
+                    scope="col"
+                    style={{
+                      paddingLeft: `${24 * scaleFactor}px`,
+                      paddingRight: `${24 * scaleFactor}px`,
+                      paddingTop: `${12 * scaleFactor}px`,
+                      paddingBottom: `${12 * scaleFactor}px`,
+                    }}
+                  >
                     File name
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th
+                    scope="col"
+                    style={{
+                      paddingLeft: `${24 * scaleFactor}px`,
+                      paddingRight: `${24 * scaleFactor}px`,
+                      paddingTop: `${12 * scaleFactor}px`,
+                      paddingBottom: `${12 * scaleFactor}px`,
+                    }}
+                  >
                     Date
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th
+                    scope="col"
+                    style={{
+                      paddingLeft: `${24 * scaleFactor}px`,
+                      paddingRight: `${24 * scaleFactor}px`,
+                      paddingTop: `${12 * scaleFactor}px`,
+                      paddingBottom: `${12 * scaleFactor}px`,
+                    }}
+                  >
                     Credits
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th
+                    scope="col"
+                    style={{
+                      paddingLeft: `${24 * scaleFactor}px`,
+                      paddingRight: `${24 * scaleFactor}px`,
+                      paddingTop: `${12 * scaleFactor}px`,
+                      paddingBottom: `${12 * scaleFactor}px`,
+                    }}
+                  >
                     Action
                   </th>
                 </tr>
               </thead>
-              <tbody className="font-poppins text-[18px]">
-                <tr className="border-b border-[#FFFFFF0D] h-[100px]">
+              <tbody
+                className="font-poppins"
+                style={{ fontSize: `${18 * scaleFactor}px` }}
+              >
+                <tr
+                  className="border-b border-[#FFFFFF0D]"
+                  style={{ height: `${100 * scaleFactor}px` }}
+                >
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium whitespace-nowrap"

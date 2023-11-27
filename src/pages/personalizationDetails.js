@@ -2,29 +2,65 @@ import React from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
+import CompTitle from "./compTitle";
+import CompInput from "./compInput";
+import CompButton from "./compButton";
 
-const PersonalizationDetails = () => {
+const PersonalizationDetails = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
     <div className="bg-[url('/public/svg/personalization_details.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="px-[150px] pt-10 text-white mt-[40px]">
-        <div className="text-center font-space-grotesk text-[48px] font-bold">
-          Personalization Details
-        </div>
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="px-[150px] text-white"
+        style={{
+          paddingTop: `${40 * scaleFactor}px`,
+          marginTop: `${40 * scaleFactor}px`,
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+        }}
+      >
+        <CompTitle
+          title="Personalization Details"
+          scaleFactor={scaleFactor}
+        ></CompTitle>
 
-        <div className="text-center mt-[100px] flex gap-[52px] items-center justify-center">
+        <div
+          className="text-center flex items-center justify-center"
+          style={{
+            marginTop: `${100 * scaleFactor}px`,
+            gap: `${52 * scaleFactor}px`,
+          }}
+        >
           <div className="text-center">
-            <div className="text-[48px] font-space-grotesk bg-[#FFFFFF1A] w-[200px] h-[150px] justify-center items-center flex rounded-[25px] font-bold tracking-[4.8px]">
+            <div
+              className="font-space-grotesk bg-[#FFFFFF1A] justify-center items-center flex font-bold"
+              style={{
+                fontSize: `${48 * scaleFactor}px`,
+                width: `${200 * scaleFactor}px`,
+                height: `${150 * scaleFactor}px`,
+                borderRadius: `${25 * scaleFactor}px`,
+                letterSpacing: `${4.8 * scaleFactor}px`,
+              }}
+            >
               3,232
             </div>
-            <div className="mt-[40px] text-[22px] font-poppins">Leads</div>
+            <div
+              className="font-poppins"
+              style={{
+                marginTop: `${40 * scaleFactor}px`,
+                fontSize: `${22 * scaleFactor}px`,
+              }}
+            >
+              Leads
+            </div>
           </div>
 
           <div className="items-center flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="60"
-              height="61"
+              width={60 * scaleFactor}
+              height={61 * scaleFactor}
               viewBox="0 0 60 61"
               fill="none"
             >
@@ -37,13 +73,13 @@ const PersonalizationDetails = () => {
                   rx="20.94"
                   transform="rotate(-45 0.271484 30.5)"
                   fill="white"
-                  fill-opacity="0.1"
+                  fillOpacity="0.1"
                 />
                 <path
                   d="M24.9493 35.4356L34.8205 25.5644M24.9493 25.5644L34.8205 35.4356"
                   stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>
@@ -54,9 +90,9 @@ const PersonalizationDetails = () => {
                   width="259.228"
                   height="259.227"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                   <feComposite
                     in2="SourceAlpha"
@@ -75,12 +111,22 @@ const PersonalizationDetails = () => {
           </div>
 
           <div className="text-center">
-            <div className="text-[48px] font-space-grotesk bg-[#FFFFFF1A] w-[200px] h-[150px] justify-center items-center flex rounded-[25px] font-bold tracking-[4.8px] border-white border-[1px]">
-              <div className="mr-[15px]">
+            <div
+              className="font-space-grotesk bg-[#FFFFFF1A] justify-center items-center flex font-bold border-white"
+              style={{
+                fontSize: `${48 * scaleFactor}px`,
+                width: `${200 * scaleFactor}px`,
+                height: `${150 * scaleFactor}px`,
+                borderRadius: `${25 * scaleFactor}px`,
+                letterSpacing: `${4.8 * scaleFactor}px`,
+                borderWidth: `${1 * scaleFactor}px`,
+              }}
+            >
+              <div style={{ marginRight: `${15 * scaleFactor}px` }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="26"
-                  height="26"
+                  width={26 * scaleFactor}
+                  height={26 * scaleFactor}
                   viewBox="0 0 26 26"
                   fill="none"
                 >
@@ -90,13 +136,13 @@ const PersonalizationDetails = () => {
                       height="26"
                       rx="13"
                       fill="white"
-                      fill-opacity="0.1"
+                      fillOpacity="0.1"
                     />
                     <path
                       d="M8.66699 13H17.3337"
                       stroke="white"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokerinecap="round"
+                      strokerinejoin="round"
                     />
                   </g>
                   <defs>
@@ -107,9 +153,9 @@ const PersonalizationDetails = () => {
                       width="226"
                       height="226"
                       filterUnits="userSpaceOnUse"
-                      color-interpolation-filters="sRGB"
+                      colorInterpolationFilters="sRGB"
                     >
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
                       <feGaussianBlur
                         in="BackgroundImageFix"
                         stdDeviation="50"
@@ -130,11 +176,11 @@ const PersonalizationDetails = () => {
                 </svg>
               </div>
               02
-              <div className="ml-[15px]">
+              <div style={{ marginLeft: `${15 * scaleFactor}px` }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="26"
-                  height="26"
+                  width={26 * scaleFactor}
+                  height={26 * scaleFactor}
                   viewBox="0 0 26 26"
                   fill="none"
                 >
@@ -144,13 +190,13 @@ const PersonalizationDetails = () => {
                       height="26"
                       rx="13"
                       fill="white"
-                      fill-opacity="0.1"
+                      fillOpacity="0.1"
                     />
                     <path
                       d="M8.66699 13H17.3337M13.0003 8.66663V17.3333"
                       stroke="white"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokerinecap="round"
+                      strokerinejoin="round"
                     />
                   </g>
                   <defs>
@@ -161,9 +207,9 @@ const PersonalizationDetails = () => {
                       width="226"
                       height="226"
                       filterUnits="userSpaceOnUse"
-                      color-interpolation-filters="sRGB"
+                      colorInterpolationFilters="sRGB"
                     >
-                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
                       <feGaussianBlur
                         in="BackgroundImageFix"
                         stdDeviation="50"
@@ -184,7 +230,13 @@ const PersonalizationDetails = () => {
                 </svg>
               </div>
             </div>
-            <div className="mt-[40px] text-[22px] font-poppins">
+            <div
+              className="font-poppins"
+              style={{
+                marginTop: `${40 * scaleFactor}px`,
+                fontSize: `${22 * scaleFactor}px`,
+              }}
+            >
               Personalization/ea
             </div>
           </div>
@@ -192,8 +244,8 @@ const PersonalizationDetails = () => {
           <div className="items-center flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="60"
-              height="61"
+              width={60 * scaleFactor}
+              height={61 * scaleFactor}
               viewBox="0 0 60 61"
               fill="none"
             >
@@ -206,19 +258,19 @@ const PersonalizationDetails = () => {
                   rx="20.9411"
                   transform="rotate(-45 0.499023 30.5)"
                   fill="white"
-                  fill-opacity="0.1"
+                  fillOpacity="0.1"
                 />
                 <path
                   d="M21.8115 28.0837H37.9201"
                   stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokerinecap="round"
+                  strokerinejoin="round"
                 />
                 <path
                   d="M21.8115 34.5271H37.9201"
                   stroke="white"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokerinecap="round"
+                  strokerinejoin="round"
                 />
               </g>
               <defs>
@@ -229,9 +281,9 @@ const PersonalizationDetails = () => {
                   width="259.23"
                   height="259.23"
                   filterUnits="userSpaceOnUse"
-                  color-interpolation-filters="sRGB"
+                  colorInterpolationFilters="sRGB"
                 >
-                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feFlood floodOpacity="0" result="BackgroundImageFix" />
                   <feGaussianBlur in="BackgroundImageFix" stdDeviation="50" />
                   <feComposite
                     in2="SourceAlpha"
@@ -250,26 +302,66 @@ const PersonalizationDetails = () => {
           </div>
 
           <div className="text-center items-center">
-            <div className="font-space-grotesk text-[64px] text-[#64FF8D] tracking-[6.4px] font-bold">6,464</div>
-            <div className="mt-[40px] font-poppins text-[22px]">Credits</div>
+            <div
+              className="font-space-grotesk text-[#64FF8D] font-bold"
+              style={{
+                fontSize: `${64 * scaleFactor}px`,
+                letterSpacing: `${6.4 * scaleFactor}px`,
+              }}
+            >
+              6,464
+            </div>
+            <div
+              className="font-poppins"
+              style={{
+                marginTop: `${25 * scaleFactor}px`,
+                fontSize: `${22 * scaleFactor}px`,
+              }}
+            >
+              Credits
+            </div>
           </div>
         </div>
 
-        <div className="mt-[70px]">
-          <div className="pt-[50px] flex flex-col justify-center">
-            <div className="text-start text-[#FFFFFF80]">Enter URL</div>
-            <div className="relative mt-4 rounded-md shadow-sm">
+        <div style={{ marginTop: `${70 * scaleFactor}px` }}>
+          <div
+            className="flex flex-col justify-center"
+            style={{ paddingTop: `${50 * scaleFactor}px` }}
+          >
+            <div
+              className="text-start text-[#FFFFFF80]"
+              style={{ fontSize: `${15 * scaleFactor}px` }}
+            >
+              Enter URL
+            </div>
+            <div
+              className="relative mt-4 rounded-md shadow-sm"
+              style={{ marginTop: `${16 * scaleFactor}px` }}
+            >
               <input
                 type="text"
                 name="url"
                 id="url"
-                className="block rounded-full w-full border-solid border-[1px] h-[80px] text-3xl border-white py-1.5 pl-12 pr-20 bg-transparent text-white placeholder:text-gray-400 sm:leading-6 focus:bg-[#ffffff1c]"
+                style={{
+                  border: `${1 * scaleFactor}px`,
+                  height: `${80 * scaleFactor}px`,
+                  paddingLeft: `${48 * scaleFactor}px`,
+                  paddingRight: `${80 * scaleFactor}px`,
+                  paddingTop: `${6 * scaleFactor}px`,
+                  paddingBottom: `${6 * scaleFactor}px`,
+                  fontSize: `${35 * scaleFactor}px`,
+                  lineHeight: `${36 * scaleFactor}px`,
+                }}
+                className="block rounded-full w-full border-solid border-white text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c]"
               />
-              <div className="absolute inset-y-0 right-7 flex items-center cursor-pointer">
+              <div
+                className="absolute inset-y-0 flex items-center cursor-pointer"
+                style={{ right: `${1.75 * scaleFactor}rem` }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="21"
+                  width={25 * scaleFactor}
+                  height={21 * scaleFactor}
                   viewBox="0 0 25 21"
                   fill="none"
                 >
@@ -284,15 +376,27 @@ const PersonalizationDetails = () => {
           </div>
         </div>
 
-        <div className="mt-[100px] text-center flex justify-center">
-          <button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-[218px] h-[85px] rounded-full mt-[50px] flex items-center justify-center text-[15px] uppercase font-space-grotesk font-bold tracking-[1.5px]">
+        <div
+          className="text-center flex justify-center"
+          style={{ marginTop: `${100 * scaleFactor}` }}
+        >
+          <button
+            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center uppercase font-space-grotesk font-bold"
+            style={{
+              width: `${218 * scaleFactor}px`,
+              height: `${85 * scaleFactor}px`,
+              marginTop: `${50 * scaleFactor}px`,
+              fontSize: `${15 * scaleFactor}px`,
+              letterSpacing: `${1.5 * scaleFactor}px`,
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="26"
-              height="25"
+              width={26 * scaleFactor}
+              height={25 * scaleFactor}
               viewBox="0 0 26 25"
               fill="none"
-              className="mr-[10px]"
+              style={{ marginRight: `${10 * scaleFactor}px` }}
             >
               <circle
                 cx="12.5"

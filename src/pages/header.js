@@ -1,14 +1,21 @@
 import React from "react";
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div className="flex justify-between px-[150px] text-white py-10">
+    <div
+      className="flex justify-between text-white"
+      style={{
+        paddingLeft: `${150 * props.scaleFactor}px`,
+        paddingRight: `${150 * props.scaleFactor}px`,
+        paddingTop: `${40 * props.scaleFactor}px`,
+        paddingBottom: `${40 * props.scaleFactor}px`,
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="117"
-        height="22"
         viewBox="0 0 117 22"
         fill="none"
+        style={{width: `${117 * props.scaleFactor}px`, height: `${22 * props.scaleFactor}px`}}
       >
         <path
           fillRule="evenodd"
@@ -19,10 +26,9 @@ const Header = () => {
       </svg>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
         viewBox="0 0 24 24"
         fill="none"
+        style={{width: `${24 * props.scaleFactor}px`, height: `${24 * props.scaleFactor}px`}}
       >
         <path
           d="M4 22C4 17.7044 7.58173 14.2222 12 14.2222C16.4183 14.2222 20 17.7044 20 22M16.5714 6.44444C16.5714 8.89904 14.5247 10.8889 12 10.8889C9.47527 10.8889 7.42857 8.89904 7.42857 6.44444C7.42857 3.98984 9.47527 2 12 2C14.5247 2 16.5714 3.98984 16.5714 6.44444Z"

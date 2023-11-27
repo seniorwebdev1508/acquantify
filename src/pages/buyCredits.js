@@ -2,11 +2,15 @@ import React from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
+import CompButton from "./compButton";
+import CompInput from "./compInput";
+import CompTitle from "./compTitle";
 
-const BuyCredits = () => {
+const BuyCredits = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
     <div className="bg-[url('/public/svg/buy_credits.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
+      <Header scaleFactor={scaleFactor}/>
       <div className="px-[150px] text-white mt-[77px] text-center font-bold">
         <div className=" font-space-grotesk text-[48px]">Buy Credits</div>
         <div className="mt-[100px] font-space-grotesk flex text-center justify-center items-center">

@@ -2,17 +2,16 @@ import React from "react";
 
 const CompButton = (props) => {
   return (
-    <div className={props.className}>
+    <div className={props.className} style={props.style}>
       <button
-        className={`bg-[linear-gradient(104deg,_#49CCFA_3.83%,_#FD71AE_41.68%,_#7C68EE_87.05%)] w-[${props.width}px] h-[${props.height}px] rounded-full flex items-center justify-center text-[${props.size}px] text-white uppercase font-space-grotesk font-bold tracking-[1.5px]`}
+        style={{width:`${props.width*props.scaleFactor}px`, height:`${props.height*props.scaleFactor}px`, fontSize:`${props.size*props.scaleFactor}px`}}
+        className={`bg-[linear-gradient(104deg,_#49CCFA_3.83%,_#FD71AE_41.68%,_#7C68EE_87.05%)] rounded-full flex items-center justify-center text-white uppercase font-space-grotesk font-bold tracking-[1.5px]`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="26"
-          height="25"
           viewBox="0 0 26 25"
           fill="none"
-          className="mr-[10px]"
+          style={{width:`${26*props.scaleFactor}px`,height:`${25*props.scaleFactor}px`,marginRight:`${10*props.scaleFactor}px`}}
         >
           <circle
             cx="12.5"

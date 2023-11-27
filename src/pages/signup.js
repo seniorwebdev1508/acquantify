@@ -6,13 +6,16 @@ import CompButton from "./compButton";
 import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
-const SignUp = () => {
+const SignUp = (props) => {
+  const wr=props.wr;
+  const hr=props.hr;
+  console.log(wr);
   return (
-    <div className="bg-[url('/public/svg/sign_up.svg')] w-full h-screen bg-cover bg-no-repeat">
+    <div className="bg-[url('/public/svg/sign_up.svg')] w-full h-full bg-cover bg-no-repeat">
       <Header />
-      <div className="px-[150px] text-white mt-[77px] text-center font-bold">
+      <div /*className="text-white mt-[77px] text-center font-bold"*/className={`px-[${150*wr}px] text-white mt-[${77*hr}px] text-center font-bold`}>
         <div className="flex justify-center">
-          <div className="mr-[120px]">
+          <div className={`mr-[${120*wr}px]`}>
             <img src="img/main.png"></img>
           </div>
           <div className="w-[426px] text-center">

@@ -5,29 +5,66 @@ import "@fontsource/space-grotesk";
 import CompButton from "./compButton";
 import CompTitle from "./compTitle";
 
-const AcquantifyCustom = () => {
+const AcquantifyCustom = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
     <div className="bg-[url('/public/svg/acquantify_custom.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="px-[150px] pt-10 text-white">
-        <CompTitle title="Acquantify Custom"></CompTitle>
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white"
+        style={{
+          paddingTop: `${10 * scaleFactor}px`,
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+        }}
+      >
+        <CompTitle
+          title="Acquantify Custom"
+          scaleFactor={scaleFactor}
+        ></CompTitle>
 
-        <div className="font-poppins text-[18px] text-center mt-[60px]">
+        <div
+          className="font-poppins text-center"
+          style={{
+            fontSize: `${18 * scaleFactor}px`,
+            marginTop: `${60 * scaleFactor}px`,
+          }}
+        >
           Looking for a custom hyper-personalization to help you better Acquaint
           yourself with a cold lead?
         </div>
 
-        <div className="mt-[60px] justify-center text-center relative">
+        <div
+          className="justify-center text-center relative"
+          style={{ marginTop: `${60 * scaleFactor}px` }}
+        >
           <input
             type="text"
-            className="rounded-[25px] w-[900px] border-solid border-[1px] h-[200px] text-[32px] border-white text-white sm:leading-6 bg-[#ffffff1c] font-poppins py-1.5 pl-12 pr-20 placeholder:text-white"
+            style={{
+              width: `${900 * scaleFactor}px`,
+              height: `${200 * scaleFactor}px`,
+              fontSize: `${32 * scaleFactor}px`,
+              borderRadius: `${25 * scaleFactor}px`,
+              borderWidth: `${1 * scaleFactor}px`,
+              paddingLeft: `${3 * scaleFactor}rem`,
+              paddingRight: `${5 * scaleFactor}rem`,
+              paddingTop: `${0.375 * scaleFactor}rem`,
+              paddingBottom: `${0.375 * scaleFactor}rem`,
+            }}
+            className="border-solid border-white text-white sm:leading-6 bg-[#ffffff1c] font-poppins placeholder:text-white"
             placeholder="Describe the type of entity/URL you are trying to utilize as a reference point."
           />
-          <div className="absolute bottom-4 right-[10rem] flex items-center cursor-pointer">
+          <div
+            className="absolute flex items-center cursor-pointer"
+            style={{
+              bottom: `${1 * scaleFactor}rem`,
+              right: `${10 * scaleFactor}rem`,
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="13"
-              height="14"
+              width={13 * scaleFactor}
+              height={14 * scaleFactor}
               viewBox="0 0 13 14"
               fill="none"
             >
@@ -41,7 +78,14 @@ const AcquantifyCustom = () => {
           </div>
         </div>
 
-        <div className="font-poppins text-[15px] text-center mt-[60px] text-[#D0D0D0]">
+        <div
+          className="font-poppins text-center text-[#D0D0D0] mx-auto"
+          style={{
+            fontSize: `${15 * scaleFactor}px`,
+            marginTop: `${60 * scaleFactor}px`,
+            width: `${875 * scaleFactor}px`,
+          }}
+        >
           Please note, we will not work with social URLs. We will do our best to
           analyze and see if our hyper-personalization will work with your use
           case. If not, you can always GO BACK and use one of our standard
@@ -49,10 +93,23 @@ const AcquantifyCustom = () => {
         </div>
 
         <div className="flex justify-center mt-30">
-          <CompButton className="mt-[50px]" width="218" height="85" title="submit" size="15"/>
+          <CompButton
+            style={{ marginTop: `${50 * scaleFactor}px` }}
+            width="218"
+            height="85"
+            title="submit"
+            size="15"
+            scaleFactor={scaleFactor}
+          />
         </div>
 
-        <div className="mt-[30px] font-poppins font-[18px] text-center">
+        <div
+          className="font-poppins text-center"
+          style={{
+            marginTop: `${30 * scaleFactor}px`,
+            fontSize: `${18 * scaleFactor}px`,
+          }}
+        >
           Go Back
         </div>
       </div>

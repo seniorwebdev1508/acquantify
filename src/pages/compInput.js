@@ -4,13 +4,26 @@ import "@fontsource/space-grotesk";
 
 const CompInput = (props) => {
   return (
-    <div className={props.className}>
-      <span className="font-poppins text-[15px] text-[#FFFFFF80] flex font-normal">
+    <div className={props.className} style={props.style}>
+      <span
+        className="font-poppins text-[#FFFFFF80] flex font-normal"
+        style={{ fontSize: `${15 * props.scaleFactor}px` }}
+      >
         {props.label}
       </span>
       <input
         type={props.type}
-        className={`mt-[14px] block rounded-full w-full h-[80px] text-[25px] font-poppins py-1.5 pl-12 pr-20 font-normal text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c] focus:border-white focus:shadow-[0_4px_10px_0px_rgba(73, 204, 250, 0.25)] backdrop-blur-[50px]`}
+        style={{
+          marginTop: `${14 * props.scaleFactor}px`,
+          height: `${80 * props.scaleFactor}px`,
+          fontSize: `${25 * props.scaleFactor}px`,
+          paddingLeft: `${12 * props.scaleFactor}px`,
+          paddingRight: `${20 * props.scaleFactor}px`,
+          paddingTop: `${6 * props.scaleFactor}px`,
+          paddingBottom: `${6 * props.scaleFactor}px`,
+          boxShadow: `0px 4px 10px 0px rgba(73, 204, 250, 0.25)`,
+        }}
+        className={`block rounded-full w-full font-poppins font-normal text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c] focus:border-white focus:shadow-[0_4px_10px_0px_rgba(73, 204, 250, 0.25)] backdrop-blur-[50px]`}
       />
     </div>
   );

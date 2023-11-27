@@ -7,28 +7,50 @@ import CompButton from "./compButton";
 import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
-import { auth, googleProvider } from '../config/firebase';
-import { createUserWithEmailAndPassword,signInWithPopup, signOut } from "firebase/auth";
-
-const Login = () => {
+import { auth, googleProvider } from "../config/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+const Login = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
-    <div className="bg-[url('/public/svg/log_in.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="px-[150px] text-white mt-[77px] text-center font-bold">
+    <div className="bg-[url('/public/svg/log_in.svg')] w-full h-full bg-cover bg-no-repeat">
+      <Header scaleFactor={props.scaleFactor} />
+      <div
+        style={{
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+          marginTop: `${77 * scaleFactor}px`,
+        }}
+        className="text-white text-center font-bold"
+      >
         <div className="flex justify-center">
-          <div className="mr-[120px]">
-            <img src="img/main.png"></img>
+          <div style={{ marginRight: `${120 * scaleFactor}px` }}>
+            <img
+              src="img/main.png"
+              style={{
+                width: `${545 * scaleFactor}px`,
+                height: `${750 * scaleFactor}px`,
+              }}
+            ></img>
           </div>
-          <div className="w-[426px] text-center">
-            <CompTitle title="Login"/>
-            <button className="mt-[50px] flex justify-center mx-auto">
+          <div style={{ width: `${426 * scaleFactor}px` }}>
+            <CompTitle title="Login" scaleFactor={scaleFactor} />
+            <button
+              className="flex justify-center mx-auto"
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+            >
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="29"
-                  height="28"
                   viewBox="0 0 29 28"
                   fill="none"
+                  style={{
+                    width: `${29 * scaleFactor}px`,
+                    height: `${28 * scaleFactor}px`,
+                  }}
                 >
                   <path
                     d="M26.82 14.2916C26.82 13.3816 26.7383 12.5066 26.5867 11.6666H14.5V16.6366H21.4067C21.1033 18.235 20.1933 19.5883 18.8283 20.4983V23.73H22.9933C25.42 21.49 26.82 18.2 26.82 14.2916Z"
@@ -48,29 +70,89 @@ const Login = () => {
                   />
                 </svg>
               </div>
-              <div className="text-white font-poppins text-[18px] ml-[23px] font-normal">
+              <div
+                className="text-white font-poppins font-normal"
+                style={{
+                  fontSize: `${18 * scaleFactor}px`,
+                  marginLeft: `${23 * scaleFactor}px`,
+                }}
+              >
                 Login with Google
               </div>
             </button>
-            <div className="mt-[35px] flex text-center items-center justify-center">
-              <div className="bg-[#FFFFFF0D] h-[1px] w-[178.5px] mr-[15px]"></div>
-              <div className="uppercase font-poppins text-[18px] text-[#FFFFFFCC] font-normal">
+            <div
+              className="flex text-center items-center justify-center"
+              style={{ marginTop: `${35 * scaleFactor}px` }}
+            >
+              <div
+                className="bg-[#FFFFFF0D]"
+                style={{
+                  height: `${1 * scaleFactor}px`,
+                  width: `${178.5 * scaleFactor}px`,
+                  marginRight: `${15 * scaleFactor}px`,
+                }}
+              ></div>
+              <div
+                className="uppercase font-poppins text-[#FFFFFFCC] font-normal"
+                style={{ fontSize: `${18 * scaleFactor}px` }}
+              >
                 or
               </div>
-              <div className="bg-[#FFFFFF0D] h-[1px] w-[178.5px] ml-[15px]"></div>
+              <div
+                className="bg-[#FFFFFF0D]"
+                style={{
+                  height: `${1 * scaleFactor}px`,
+                  width: `${178.5 * scaleFactor}px`,
+                  marginLeft: `${15 * scaleFactor}px`,
+                }}
+              ></div>
             </div>
-            <div className="mt-[50px]">
-              <CompInput className="mt-[25px]" type="email" label="Email"></CompInput>
-              <CompInput className="mt-[25px]" type="password" label="Password"></CompInput>
+            <div style={{ marginTop: `${50 * scaleFactor}px` }}>
+              <CompInput
+                style={{ marginTop: `${25 * scaleFactor}px` }}
+                type="email"
+                label="Email"
+                scaleFactor={scaleFactor}
+              ></CompInput>
+              <CompInput
+                style={{ marginTop: `${25 * scaleFactor}px` }}
+                type="password"
+                label="Password"
+                scaleFactor={scaleFactor}
+              ></CompInput>
             </div>
-            <div className="mt-[50px] flex justify-center">
-              <CompButton size="15" width="218" height="85" title="login"/>
+            <div
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+              className="flex justify-center"
+            >
+              <CompButton
+                size="15"
+                width="218"
+                height="85"
+                title="login"
+                scaleFactor={scaleFactor}
+              />
             </div>
-            <div className="mt-[50px] text-[18px] font-poppins font-normal">
+            <div
+              style={{
+                marginTop: `${50 * scaleFactor}px`,
+                fontSize: `${18 * scaleFactor}px`,
+              }}
+              className="font-poppins font-normal"
+            >
               Forgot Password?
             </div>
-            <div className="mt-[30px] flex justify-center font-poppins text-[18px] font-normal">
-              Don't have an account?<Link to="/signup"><span className="text-[#3BA8CE]">&nbsp;Sign up now!</span></Link>
+            <div
+              style={{
+                marginTop: `${30 * scaleFactor}px`,
+                fontSize: `${18 * scaleFactor}px`,
+              }}
+              className="flex justify-center font-poppins font-normal"
+            >
+              Don't have an account?
+              <Link to="/signup">
+                <span className="text-[#3BA8CE]">&nbsp;Sign up now!</span>
+              </Link>
             </div>
           </div>
         </div>

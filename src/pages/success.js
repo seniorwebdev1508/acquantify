@@ -2,21 +2,47 @@ import React from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
+import CompTitle from "./compTitle";
+import CompButton from "./compButton";
+import CompInput from "./compInput";
 
-const Success = () => {
+const Success = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
-    <div className="bg-[url('/public/svg/success.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="mt-[126px] justify-center items-center content-center">
-        <div className="font-space-grotesk text-[48px] font-bold text-white text-center">
+    <div
+      className="bg-[url('/public/svg/success.svg')] w-full h-screen bg-cover bg-no-repeat"
+      style={{
+        paddingLeft: `${150 * scaleFactor}px`,
+        paddingRight: `${150 * scaleFactor}px`,
+      }}
+    >
+      <Header scaleFactor={props.scaleFactor} />
+      <div
+        className="justify-center items-center content-center"
+        style={{ marginTop: `${126 * scaleFactor}px` }}
+      >
+        <div
+          className="font-space-grotesk font-bold text-white text-center"
+          style={{ fontSize: `${48 * scaleFactor}px` }}
+        >
           Success!
         </div>
 
-        <div className="mt-[100px] rounded-[25px] w-[200px] h-[200px] bg-[#FFFFFF1A] border-[#64FF8D] border-[1px] mx-auto py-12">
+        <div
+          className="bg-[#FFFFFF1A] border-[#64FF8D] border-[1px] mx-auto"
+          style={{
+            marginTop: `${100 * scaleFactor}px`,
+            borderRadius: `${25 * scaleFactor}px`,
+            width: `${200 * scaleFactor}px`,
+            height: `${200 * scaleFactor}px`,
+            paddingTop: `${48 * scaleFactor}px`,
+            paddingBottom: `${48 * scaleFactor}px`,
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="64"
-            height="64"
+            width={64 * scaleFactor}
+            height={64 * scaleFactor}
             viewBox="0 0 64 64"
             fill="none"
             className="mx-auto"
@@ -30,37 +56,24 @@ const Success = () => {
               fill="#64FF8D"
             />
           </svg>
-          <div className="text-white uppercase font-space-grotesk text-[15px] font-bold tracking-[1.5px] text-center">
+          <div
+            className="text-white uppercase font-space-grotesk font-bold tracking-[1.5px] text-center"
+            style={{ fontSize: `${15 * scaleFactor}px` }}
+          >
             download
           </div>
         </div>
-        <div className="mt-[100px]">
-          <div className="flex justify-center mt-30">
-            <button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-[328px] h-[85px] rounded-full mt-[50px] flex items-center justify-center text-[15px] uppercase font-space-grotesk font-bold tracking-[1.5px] text-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="26"
-                height="25"
-                viewBox="0 0 26 25"
-                fill="none"
-                className="mr-[10px]"
-              >
-                <circle
-                  cx="12.5"
-                  cy="12.5"
-                  r="12"
-                  transform="matrix(-1 0 0 1 25.5 0)"
-                  stroke="white"
-                  strokeOpacity="0.8"
-                />
-                <path
-                  d="M7.5 12.5C7.22386 12.5 7 12.7239 7 13C7 13.2761 7.22386 13.5 7.5 13.5V12.5ZM17.8536 13.3536C18.0488 13.1583 18.0488 12.8417 17.8536 12.6464L14.6716 9.46447C14.4763 9.2692 14.1597 9.2692 13.9645 9.46447C13.7692 9.65973 13.7692 9.97631 13.9645 10.1716L16.7929 13L13.9645 15.8284C13.7692 16.0237 13.7692 16.3403 13.9645 16.5355C14.1597 16.7308 14.4763 16.7308 14.6716 16.5355L17.8536 13.3536ZM7.5 13.5H17.5V12.5H7.5V13.5Z"
-                  fill="white"
-                  fillOpacity="0.8"
-                />
-              </svg>
-              start a new batch!
-            </button>
+        <div style={{ marginTop: `${100 * scaleFactor}px` }}>
+          <div
+            className="flex justify-center"
+            style={{ marginTop: `${30 * scaleFactor}px` }}
+          >
+            <CompButton
+              title="start a new batch!"
+              width="328"
+              height="85"
+              scaleFactor={scaleFactor}
+            ></CompButton>
           </div>
         </div>
       </div>

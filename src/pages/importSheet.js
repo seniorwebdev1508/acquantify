@@ -3,30 +3,57 @@ import Header from "./header";
 import CompButton from "./compButton";
 import CompTitle from "./compTitle";
 
-const ImportSheet = () => {
+const ImportSheet = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
     <div className="bg-[url('/public/svg/import_page.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="pt-10 text-white w-[900px] mx-auto">
-        <CompTitle title="Import Sheet" />
-        <span className="pt-[50px] font-poppins text-[15px] text-[#FFFFFF80] flex font-normal">
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white mx-auto"
+        style={{
+          paddingTop: `${10 * scaleFactor}px`,
+          width: `${900 * scaleFactor}px`,
+        }}
+      >
+        <CompTitle title="Import Sheet" scaleFactor={scaleFactor} />
+        <span
+          className="font-poppins text-[#FFFFFF80] flex font-normal"
+          style={{
+            paddingTop: `${50 * scaleFactor}px`,
+            fontSize: `${15 * scaleFactor}px`,
+          }}
+        >
           Google Sheet URL
         </span>
         <div className="flex flex-col items-center">
-          <div className="relative mt-[15px] rounded-md shadow-sm w-full text-center">
+          <div
+            className="relative rounded-md shadow-sm w-full text-center"
+            style={{ marginTop: `${15 * scaleFactor}px` }}
+          >
             <input
               type="text"
               name="url"
               id="url"
-              className="block rounded-full w-full border-solid border-[1px] h-[80px] text-[35px] border-white py-1.5 pl-12 pr-20 bg-transparent text-white placeholder:text-gray-400 sm:leading-6 focus:bg-[#ffffff1c]"
+              style={{
+                border: `${1 * scaleFactor}px`,
+                height: `${80 * scaleFactor}px`,
+                fontSize: `${35 * scaleFactor}px`,
+                paddingLeft: `${48 * scaleFactor}px`,
+                paddingRight: `${80 * scaleFactor}px`,
+                paddingTop: `${6 * scaleFactor}px`,
+                paddingBottom: `${6 * scaleFactor}px`,
+              }}
+              className="block rounded-full w-full border-solid border-white text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c]"
             />
             <div className="absolute inset-y-0 right-7 flex items-center cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="25"
-                height="21"
                 viewBox="0 0 25 21"
                 fill="none"
+                style={{
+                  width: `${25 * scaleFactor}px`,
+                  height: `${21 * scaleFactor}px`,
+                }}
               >
                 <path
                   d="M14.6652 9.25001C16.4601 12.3589 15.4918 16.2783 12.5025 18.0042L10.3375 19.2542C7.34814 20.9801 3.46971 19.8589 1.6748 16.75C-0.120118 13.6411 0.848139 9.72174 3.83746 7.99585L4.37873 7.68335M10.3351 11.75C8.54014 8.64112 9.50841 4.72172 12.4977 2.99585L14.6628 1.74585C17.6521 0.0199746 21.5305 1.14112 23.3254 4.25001C25.1203 7.35889 24.1521 11.2783 21.1628 13.0042L20.6215 13.3167"
@@ -40,22 +67,31 @@ const ImportSheet = () => {
 
         <div className="flex justify-center">
           <CompButton
-            className="mt-[50px]"
+            style={{marginTop:`${50*scaleFactor}px`}}
             title="continue"
             width="237"
             height="85"
             size="15"
+            scaleFactor={scaleFactor}
           />
         </div>
 
-        <div className="flex justify-center mt-[38px] text-[18px] font-poppins">
+        <div
+          className="flex justify-center font-poppins"
+          style={{
+            marginTop: `${38 * scaleFactor}px`,
+            fontSize: `${18 * scaleFactor}px`,
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="26"
-            height="26"
             viewBox="0 0 26 26"
             fill="none"
-            className="mr-[10px]"
+            style={{
+              marginRight: `${10 * scaleFactor}px`,
+              width: `${26 * scaleFactor}px`,
+              height: `${26 * scaleFactor}px`,
+            }}
           >
             <path
               fillRule="evenodd"

@@ -1,23 +1,40 @@
 import React from "react";
 import Header from "./header";
-import '@fontsource/poppins';
-import '@fontsource/space-grotesk';
+import "@fontsource/poppins";
+import "@fontsource/space-grotesk";
+import CompTitle from "./compTitle";
+import CompInput from "./compInput";
+import CompButton from "./compButton";
 
-const PersonalizationPreferences = () => {
+const PersonalizationPreferences = (props) => {
+  const scaleFactor = props.scaleFactor;
   return (
     <div className="bg-[url('/public/svg/personalization_preferences.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="px-[150px] pt-10 text-white">
-        <div className="text-center text-5xl font-space-grotesk font-bold">Personalization Preferences</div>
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white"
+        style={{
+          paddingTop: `${10 * scaleFactor}px`,
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+        }}
+      >
+        <CompTitle
+          scaleFactor={scaleFactor}
+          title="Personalization Preferences"
+        ></CompTitle>
 
-        <div className="mt-[100px]">
-          <div className="flex justify-center gap-[115px]">
-            <div className="w-[200px]">
-              <div className="h-[200px]">
+        <div style={{ marginTop: `${100 * scaleFactor}px` }}>
+          <div
+            className="flex justify-center"
+            style={{ gap: `${100 * scaleFactor}px` }}
+          >
+            <div style={{ width: `${200 * scaleFactor}px` }}>
+              <div style={{ height: `${200 * scaleFactor}px` }}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="200"
-                  height="200"
+                  width={200*scaleFactor}
+                  height={200*scaleFactor}
                   viewBox="0 0 200 200"
                   fill="none"
                 >
@@ -82,14 +99,22 @@ const PersonalizationPreferences = () => {
                   </defs>
                 </svg>
               </div>
-              <div className="mt-[40px] text-center text-[22px] font-poppins">Article</div>
+              <div
+                className="text-center font-poppins"
+                style={{
+                  marginTop: `${40 * scaleFactor}px`,
+                  fontSize: `${22 * scaleFactor}px`,
+                }}
+              >
+                Article
+              </div>
             </div>
-            <div className="w-[200px]">
-              <div className="h-[200px]">
+            <div style={{width:`${200*scaleFactor}px`}}>
+              <div style={{height:`${200*scaleFactor}px`}}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="201"
-                  height="200"
+                  width={201*scaleFactor}
+                  height={200*scaleFactor}
                   viewBox="0 0 201 200"
                   fill="none"
                 >
@@ -140,16 +165,16 @@ const PersonalizationPreferences = () => {
                   </defs>
                 </svg>
               </div>
-              <div className="mt-[40px] text-center text-[22px] font-poppins">
+              <div className="text-center font-poppins" style={{marginTop:`${40*scaleFactor}px`, fontSize:`${22*scaleFactor}px`}}>
                 Podcast Episode
               </div>
             </div>
-            <div className="w-[200px]">
-              <div className="h-[200px]">
+            <div style={{width:`${200*scaleFactor}px`}}>
+              <div style={{height:`${200*scaleFactor}px`}}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="201"
-                  height="200"
+                  width={201*scaleFactor}
+                  height={200*scaleFactor}
                   viewBox="0 0 201 200"
                   fill="none"
                 >
@@ -217,16 +242,16 @@ const PersonalizationPreferences = () => {
                   </defs>
                 </svg>
               </div>
-              <div className="mt-[40px] text-center text-[22px] font-poppins">
+              <div className="text-center font-poppins" style={{marginTop:`${40*scaleFactor}px`, fontSize:`${22*scaleFactor}px`}}>
                 Personal Site
               </div>
             </div>
-            <div className="w-[200px]">
-              <div className="h-[200px]">
+            <div style={{width:`${200*scaleFactor}px`}}>
+              <div style={{height:`${200*scaleFactor}px`}}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="200"
-                  height="200"
+                  width={200*scaleFactor}
+                  height={200*scaleFactor}
                   viewBox="0 0 200 200"
                   fill="none"
                 >
@@ -275,16 +300,14 @@ const PersonalizationPreferences = () => {
                   </defs>
                 </svg>
               </div>
-              <div className="mt-[40px] text-center text-[22px] font-poppins">
+              <div className="text-center font-poppins" style={{marginTop:`${40*scaleFactor}px`, fontSize:`${22*scaleFactor}px`}}>
                 Corporate Site
               </div>
             </div>
           </div>
-          <div className="mt-[100px] text-[18px] text-center font-poppins">
+          <div className="text-center font-poppins" style={{marginTop:`${100*scaleFactor}px`, fontSize:`${18*scaleFactor}px`}}>
             Not seeing what you want?
-            <span className="text-[#3BA8CE] ml-1">
-              Try Acquantify Custom.
-            </span>
+            <span className="text-[#3BA8CE]" style={{marginLeft:`${4*scaleFactor}px`}}>Try Acquantify Custom.</span>
           </div>
         </div>
       </div>
