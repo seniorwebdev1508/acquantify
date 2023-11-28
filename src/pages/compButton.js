@@ -4,14 +4,23 @@ const CompButton = (props) => {
   return (
     <div className={props.className} style={props.style}>
       <button
-        style={{width:`${props.width*props.scaleFactor}px`, height:`${props.height*props.scaleFactor}px`, fontSize:`${props.size*props.scaleFactor}px`}}
-        className={`bg-[linear-gradient(104deg,_#49CCFA_3.83%,_#FD71AE_41.68%,_#7C68EE_87.05%)] rounded-full flex items-center justify-center text-white uppercase font-space-grotesk font-bold tracking-[1.5px]`}
+        style={{
+          width: `${props.width * props.scaleFactor}px`,
+          height: `${props.height * props.scaleFactor}px`,
+          fontSize: `${props.size * props.scaleFactor}px`,
+        }}
+        className="transition-all duration-300 ease-out hover:bg-[linear-gradient(_transparent_0%,_transparent_100%)] hover:border-white hover:border-2 bg-[linear-gradient(104deg,_#49CCFA_3.83%,_#FD71AE_41.68%,_#7C68EE_87.05%)] rounded-full flex items-center justify-center text-white uppercase font-space-grotesk font-bold tracking-[1.5px]"
+        onClick={props.onClick}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 26 25"
           fill="none"
-          style={{width:`${26*props.scaleFactor}px`,height:`${25*props.scaleFactor}px`,marginRight:`${10*props.scaleFactor}px`}}
+          style={{
+            width: `${26 * props.scaleFactor}px`,
+            height: `${25 * props.scaleFactor}px`,
+            marginRight: `${10 * props.scaleFactor}px`,
+          }}
         >
           <circle
             cx="12.5"

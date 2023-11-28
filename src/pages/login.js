@@ -7,14 +7,29 @@ import CompButton from "./compButton";
 import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
-import { auth, googleProvider } from "../config/firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { logInWithEmailAndPassword, signInWithGoogle } from "../config/firebase";
+
 const Login = (props) => {
   const scaleFactor = props.scaleFactor;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const onLogin = async (e) => {
+    await logInWithEmailAndPassword(email, password)
+    navigate("/is");
+  };
+  const onLoginWithGoogle = async () => {
+    await signInWithGoogle();
+    navigate("/is");
+  };
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
   return (
     <div className="bg-[url('/public/svg/log_in.svg')] w-full h-full bg-cover bg-no-repeat">
       <Header scaleFactor={props.scaleFactor} />
@@ -34,6 +49,7 @@ const Login = (props) => {
                 width: `${545 * scaleFactor}px`,
                 height: `${750 * scaleFactor}px`,
               }}
+              alt="main"
             ></img>
           </div>
           <div style={{ width: `${426 * scaleFactor}px` }}>
@@ -41,6 +57,7 @@ const Login = (props) => {
             <button
               className="flex justify-center mx-auto"
               style={{ marginTop: `${50 * scaleFactor}px` }}
+              onClick={onLoginWithGoogle}
             >
               <div>
                 <svg
@@ -113,12 +130,16 @@ const Login = (props) => {
                 type="email"
                 label="Email"
                 scaleFactor={scaleFactor}
+                value={email}
+                onChange={onChangeEmail}
               ></CompInput>
               <CompInput
                 style={{ marginTop: `${25 * scaleFactor}px` }}
                 type="password"
                 label="Password"
                 scaleFactor={scaleFactor}
+                value={password}
+                onChange={onChangePassword}
               ></CompInput>
             </div>
             <div
@@ -131,6 +152,7 @@ const Login = (props) => {
                 height="85"
                 title="login"
                 scaleFactor={scaleFactor}
+                onClick={onLogin}
               />
             </div>
             <div

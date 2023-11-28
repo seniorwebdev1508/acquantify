@@ -1,49 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
+import CompButton from "./compButton";
+import CompInput from "./compInput";
+import CompTitle from "./compTitle";
 
-const ForgotPwd = () => {
+import { sendPasswordReset } from "../config/firebase";
+
+const ForgotPwd = (props) => {
+  const scaleFactor = props.scaleFactor;
+  const [email, setEmail] = useState("");
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const onResetPw = async () => {
+    await sendPasswordReset(email);
+  };
+
   return (
     <div className="bg-[url('/public/svg/forgot_pwd.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header />
-      <div className="px-[150px] text-white mt-[77px] text-center font-bold">
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white text-center font-bold"
+        style={{
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+          marginTop: `${150 * scaleFactor}px`,
+        }}
+      >
         <div className="flex justify-center">
-          <div className="mr-[120px]">
-            <img src="img/main.png"></img>
+          <div
+            className="mr-[120px]"
+            style={{ marginRight: `${120 * scaleFactor}px` }}
+          >
+            <img
+              src="img/main.png"
+              style={{
+                width: `${545 * scaleFactor}px`,
+                height: `${750 * scaleFactor}px`,
+              }}
+              alt="main"
+            ></img>
           </div>
-          <div className="w-[426px] text-center">
-            <div className="text-white font-space-grotesk text-[48px] font-bold">
-              Forgot Password?
-            </div>
-            <div className="mt-[50px] font-poppins text-white font-normal">
+          <div
+            className="text-center"
+            style={{ width: `${426 * scaleFactor}px` }}
+          >
+            <CompTitle title="Forgot Password?" scaleFactor={scaleFactor} />
+            <div
+              className="font-poppins text-white font-normal"
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+            >
               No worries! Happens to the best of us? Go ahead and enter your
               email and we will send you instructions to log back in!
             </div>
 
-            <div className="mt-[50px]">
-              <span className="font-poppins text-[15px] text-[#FFFFFF80] flex font-normal">
-                Email
-              </span>
-              <input
+            <div style={{ marginTop: `${50 * scaleFactor}px` }}>
+              <CompInput
+                style={{ marginTop: `${14 * scaleFactor}px` }}
                 type="email"
-                className="mt-[14px] block rounded-full w-full h-[80px] text-[25px] font-poppins py-1.5 pl-12 pr-20 text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c] focus:border-white focus:shadow-[0_4px_10px_0px_rgba(73, 204, 250, 0.25)] backdrop-blur-[50px]"
+                label="Email"
+                scaleFactor={scaleFactor}
+                value={email}
+                onChange={onChangeEmail}
+              ></CompInput>
+            </div>
+            <div
+              className="flex justify-center"
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+            >
+              <CompButton
+                size="15"
+                width="266"
+                height="71"
+                title="reset password"
+                scaleFactor={scaleFactor}
+                onClick={onResetPw}
               />
             </div>
-            <div className="mt-[50px] flex justify-center">
-              <button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-[266px] h-[71px] rounded-full mt-[50px] flex items-center justify-center text-[15px] text-white uppercase font-space-grotesk font-bold tracking-[1.5px]">
-                reset password
-              </button>
-            </div>
-            <div className="mt-[50px] flex justify-center font-poppins text-[18px] font-normal">
+            <div
+              className="flex justify-center font-poppins font-normal"
+              style={{
+                marginTop: `${50 * scaleFactor}px`,
+                fontSize: `${18 * scaleFactor}px`,
+              }}
+            >
               Don't have an account?
               <span className="text-[#3BA8CE]">&nbsp;Sign up Now!</span>
             </div>
-            <div className="mt-[50px] flex justify-center">
+            <div
+              className="flex justify-center"
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="33"
-                height="33"
+                width={33 * scaleFactor}
+                height={33 * scaleFactor}
                 viewBox="0 0 33 33"
                 fill="none"
               >
@@ -60,7 +113,15 @@ const ForgotPwd = () => {
                   fillOpacity="0.8"
                 />
               </svg>
-              <span className="ml-[15px] font-poppins text-[18px] font-normal text-[#FFFFFF80]">Return to sign-in</span>
+              <span
+                className="font-poppins font-normal text-[#FFFFFF80]"
+                style={{
+                  marginLeft: `${15 * scaleFactor}px`,
+                  fontSize: `${18 * scaleFactor}px`,
+                }}
+              >
+                Return to sign-in
+              </span>
             </div>
           </div>
         </div>

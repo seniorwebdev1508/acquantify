@@ -4,7 +4,6 @@ import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompTitle from "./compTitle";
 import CompButton from "./compButton";
-import CompInput from "./compInput";
 
 const Success = (props) => {
   const scaleFactor = props.scaleFactor;
@@ -21,12 +20,7 @@ const Success = (props) => {
         className="justify-center items-center content-center"
         style={{ marginTop: `${126 * scaleFactor}px` }}
       >
-        <div
-          className="font-space-grotesk font-bold text-white text-center"
-          style={{ fontSize: `${48 * scaleFactor}px` }}
-        >
-          Success!
-        </div>
+        <CompTitle title="Success!" scaleFactor={scaleFactor} />
 
         <div
           className="bg-[#FFFFFF1A] border-[#64FF8D] border-[1px] mx-auto"

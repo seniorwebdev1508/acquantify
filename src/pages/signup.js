@@ -1,31 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
+import { useNavigate } from "react-router-dom";
 import CompButton from "./compButton";
 import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
+import { registerWithEmailAndPassword } from "../config/firebase";
+
 const SignUp = (props) => {
-  const wr=props.wr;
-  const hr=props.hr;
-  console.log(wr);
+  const scaleFactor = props.scaleFactor;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
+
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    await registerWithEmailAndPassword(email, password);
+    navigate("/");
+  }
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  const onChangeName = (event) => {
+    setName(event.target.value);
+  }
   return (
     <div className="bg-[url('/public/svg/sign_up.svg')] w-full h-full bg-cover bg-no-repeat">
-      <Header />
-      <div /*className="text-white mt-[77px] text-center font-bold"*/className={`px-[${150*wr}px] text-white mt-[${77*hr}px] text-center font-bold`}>
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white text-center font-bold"
+        style={{ marginTop: `${77 * scaleFactor}px` }}
+      >
         <div className="flex justify-center">
-          <div className={`mr-[${120*wr}px]`}>
-            <img src="img/main.png"></img>
+          <div style={{ marginRight: `${120 * scaleFactor}px` }}>
+            <img
+              src="img/main.png"
+              style={{
+                width: `${545 * scaleFactor}px`,
+                height: `${750 * scaleFactor}px`,
+              }}
+              alt="main"
+            ></img>
           </div>
-          <div className="w-[426px] text-center">
-            <CompTitle title="Sign Up"/>
-            <div className="mt-[50px] flex justify-center">
+          <div
+            className="text-center"
+            style={{ width: `${426 * scaleFactor}px` }}
+          >
+            <CompTitle title="Sign Up" scaleFactor={scaleFactor} />
+            <div
+              className="flex justify-center"
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+            >
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="29"
-                  height="28"
+                  width={29 * scaleFactor}
+                  height={28 * scaleFactor}
                   viewBox="0 0 29 28"
                   fill="none"
                 >
@@ -47,39 +83,85 @@ const SignUp = (props) => {
                   />
                 </svg>
               </div>
-              <div className="text-white font-poppins text-[18px] ml-[23px] font-normal">
+              <div
+                className="text-white font-poppins font-normal"
+                style={{
+                  fontSize: `${18 * scaleFactor}px`,
+                  marginLeft: `${23 * scaleFactor}px`,
+                }}
+              >
                 Sign-up with Google
               </div>
             </div>
-            <div className="mt-[35px] flex text-center items-center">
-              <div className="bg-[#FFFFFF0D] h-[1px] w-[178.5px] mr-[15px]"></div>
+            <div
+              className="flex text-center items-center"
+              style={{ marginTop: `${35 * scaleFactor}px` }}
+            >
+              <div
+                className="bg-[#FFFFFF0D]"
+                style={{
+                  height: `${1 * scaleFactor}px`,
+                  width: `${128.5 * scaleFactor}px`,
+                  marginRight: `${15 * scaleFactor}px`,
+                }}
+              ></div>
               <div className="uppercase font-poppins text-[18px] text-[#FFFFFFCC] font-normal">
                 or
               </div>
-              <div className="bg-[#FFFFFF0D] h-[1px] w-[178.5px] ml-[15px]"></div>
+              <div
+                className="bg-[#FFFFFF0D]"
+                style={{
+                  height: `${1 * scaleFactor}px`,
+                  width: `${128.5 * scaleFactor}px`,
+                  marginLeft: `${15 * scaleFactor}px`,
+                }}
+              ></div>
             </div>
-            <div className="mt-[50px]">
-              <CompInput type="text" label="Name"></CompInput>
+            <div style={{ marginTop: `${50 * scaleFactor}px` }}>
               <CompInput
-                className="mt-[25px]"
+                type="text"
+                label="Name"
+                value={name}
+                onChange={onChangeName}
+                scaleFactor={scaleFactor}
+              ></CompInput>
+              <CompInput
                 type="email"
                 label="Email"
+                value={email}
+                onChange={onChangeEmail}
+                scaleFactor={scaleFactor}
+                style={{ marginTop: `${25 * scaleFactor}px` }}
               ></CompInput>
               <CompInput
-                className="mt-[25px]"
+                style={{ marginTop: `${25 * scaleFactor}px` }}
                 type="password"
                 label="Password"
+                onChange={onChangePassword}
+                value={password}
+                scaleFactor={scaleFactor}
               ></CompInput>
             </div>
-            <div className="mt-[50px] flex justify-center">
+            <div
+              className="flex justify-center"
+              style={{ marginTop: `${50 * scaleFactor}px` }}
+            >
               <CompButton
                 width="218"
                 height="85"
                 size="15"
                 title="register"
+                onClick={onSignUp}
+                scaleFactor={scaleFactor}
               ></CompButton>
             </div>
-            <div className="mt-[50px] flex justify-center font-poppins text-[18px] font-normal">
+            <div
+              className="flex justify-center font-poppins font-normal"
+              style={{
+                marginTop: `${50 * scaleFactor}px`,
+                fontSize: `${18 * scaleFactor}px`,
+              }}
+            >
               Have an account?
               <span className="text-[#3BA8CE]">&nbsp;Sign in now!</span>
             </div>
