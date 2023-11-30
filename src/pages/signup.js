@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import CompButton from "./compButton";
 import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
-import { registerWithEmailAndPassword } from "../config/firebase";
+import {
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../config/firebase";
 
 const SignUp = (props) => {
   const scaleFactor = props.scaleFactor;
@@ -17,10 +20,27 @@ const SignUp = (props) => {
   const navigate = useNavigate();
 
   const onSignUp = async (e) => {
-    e.preventDefault();
-    await registerWithEmailAndPassword(email, password);
-    navigate("/");
-  }
+    // e.preventDefault();
+    const result = await registerWithEmailAndPassword(name, email, password);
+    console.log(result);
+    if (result === "success") {
+      navigate("/");
+    } else {
+      alert(result);
+    }
+  };
+  const onSignUpWithGoogle = async (e) => {
+    // e.preventDefault();
+    console.log("asdf");
+    const result = await signInWithGoogle(1); // 1 = google
+    console.log(result);
+    console.log("asdf");
+    if (result === "success") {
+      navigate("/");
+    } else {
+      alert(result);
+    }
+  };
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -29,7 +49,7 @@ const SignUp = (props) => {
   };
   const onChangeName = (event) => {
     setName(event.target.value);
-  }
+  };
   return (
     <div className="bg-[url('/public/svg/sign_up.svg')] w-full h-full bg-cover bg-no-repeat">
       <Header scaleFactor={scaleFactor} />
@@ -53,9 +73,10 @@ const SignUp = (props) => {
             style={{ width: `${426 * scaleFactor}px` }}
           >
             <CompTitle title="Sign Up" scaleFactor={scaleFactor} />
-            <div
-              className="flex justify-center"
+            <button
+              className="flex justify-center mx-auto"
               style={{ marginTop: `${50 * scaleFactor}px` }}
+              onClick={onSignUpWithGoogle}
             >
               <div>
                 <svg
@@ -92,9 +113,9 @@ const SignUp = (props) => {
               >
                 Sign-up with Google
               </div>
-            </div>
+            </button>
             <div
-              className="flex text-center items-center"
+              className="flex text-center items-center justify-center"
               style={{ marginTop: `${35 * scaleFactor}px` }}
             >
               <div
@@ -163,7 +184,9 @@ const SignUp = (props) => {
               }}
             >
               Have an account?
-              <span className="text-[#3BA8CE]">&nbsp;Sign in now!</span>
+              <Link to="/">
+                <span className="text-[#3BA8CE]">&nbsp;Sign in now!</span>
+              </Link>
             </div>
           </div>
         </div>

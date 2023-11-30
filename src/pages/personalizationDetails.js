@@ -3,7 +3,6 @@ import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompTitle from "./compTitle";
-import CompInput from "./compInput";
 import CompButton from "./compButton";
 
 const PersonalizationDetails = (props) => {
@@ -326,16 +325,16 @@ const PersonalizationDetails = (props) => {
         <div style={{ marginTop: `${70 * scaleFactor}px` }}>
           <div
             className="flex flex-col justify-center"
-            style={{ paddingTop: `${50 * scaleFactor}px` }}
+            style={{ paddingTop: `${50 * scaleFactor}px`}}
           >
             <div
               className="text-start text-[#FFFFFF80]"
-              style={{ fontSize: `${15 * scaleFactor}px` }}
+              style={{ fontSize: `${15 * scaleFactor}px`, paddingLeft: `${100 * scaleFactor}px`  }}
             >
               Enter URL
             </div>
             <div
-              className="relative mt-4 rounded-md shadow-sm"
+              className="relative mt-4 rounded-md shadow-sm mx-auto"
               style={{ marginTop: `${16 * scaleFactor}px` }}
             >
               <input
@@ -351,6 +350,7 @@ const PersonalizationDetails = (props) => {
                   paddingBottom: `${6 * scaleFactor}px`,
                   fontSize: `${35 * scaleFactor}px`,
                   lineHeight: `${36 * scaleFactor}px`,
+                  width: `${943 * scaleFactor}px`,
                 }}
                 className="block rounded-full w-full border-solid border-white text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c]"
               />
@@ -380,40 +380,14 @@ const PersonalizationDetails = (props) => {
           className="text-center flex justify-center"
           style={{ marginTop: `${100 * scaleFactor}` }}
         >
-          <button
-            className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center uppercase font-space-grotesk font-bold"
-            style={{
-              width: `${218 * scaleFactor}px`,
-              height: `${85 * scaleFactor}px`,
-              marginTop: `${50 * scaleFactor}px`,
-              fontSize: `${15 * scaleFactor}px`,
-              letterSpacing: `${1.5 * scaleFactor}px`,
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={26 * scaleFactor}
-              height={25 * scaleFactor}
-              viewBox="0 0 26 25"
-              fill="none"
-              style={{ marginRight: `${10 * scaleFactor}px` }}
-            >
-              <circle
-                cx="12.5"
-                cy="12.5"
-                r="12"
-                transform="matrix(-1 0 0 1 25.5 0)"
-                stroke="white"
-                strokeOpacity="0.8"
-              />
-              <path
-                d="M7.5 12.5C7.22386 12.5 7 12.7239 7 13C7 13.2761 7.22386 13.5 7.5 13.5V12.5ZM17.8536 13.3536C18.0488 13.1583 18.0488 12.8417 17.8536 12.6464L14.6716 9.46447C14.4763 9.2692 14.1597 9.2692 13.9645 9.46447C13.7692 9.65973 13.7692 9.97631 13.9645 10.1716L16.7929 13L13.9645 15.8284C13.7692 16.0237 13.7692 16.3403 13.9645 16.5355C14.1597 16.7308 14.4763 16.7308 14.6716 16.5355L17.8536 13.3536ZM7.5 13.5H17.5V12.5H7.5V13.5Z"
-                fill="white"
-                fillOpacity="0.8"
-              />
-            </svg>
-            acquantify
-          </button>
+          <CompButton
+            title="acquantify"
+            width="218"
+            height="85"
+            size="15"
+            scaleFactor={scaleFactor}
+            style={{ marginTop: `${25 * scaleFactor}px` }}
+          ></CompButton>
         </div>
       </div>
     </div>

@@ -16,12 +16,22 @@ const Login = (props) => {
   const navigate = useNavigate();
 
   const onLogin = async (e) => {
-    await logInWithEmailAndPassword(email, password)
-    navigate("/is");
+    const result = await logInWithEmailAndPassword(email, password);
+    console.log(result);
+    if (result === "success") {
+      navigate("/is");
+    } else {
+      alert(result);
+    }
   };
   const onLoginWithGoogle = async () => {
-    await signInWithGoogle();
-    navigate("/is");
+    const result = await signInWithGoogle(0);
+    console.log(result);
+    if (result === "success") {
+      navigate("/is");
+    } else {
+      alert(result);
+    }
   };
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -172,7 +182,7 @@ const Login = (props) => {
               className="flex justify-center font-poppins font-normal"
             >
               Don't have an account?
-              <Link to="/signup">
+              <Link to="/su">
                 <span className="text-[#3BA8CE]">&nbsp;Sign up now!</span>
               </Link>
             </div>
