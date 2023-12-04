@@ -2,8 +2,6 @@ import React from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
-import CompButton from "./compButton";
-import CompInput from "./compInput";
 import CompTitle from "./compTitle";
 
 const PreviousAcquanitifications = (props) => {

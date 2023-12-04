@@ -3,34 +3,65 @@ import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompButton from "./compButton";
-import CompInput from "./compInput";
-import CompTitle from "./compTitle";
 
 const BuyCredits = (props) => {
   const scaleFactor = props.scaleFactor;
   return (
-    <div className="bg-[url('/public/svg/buy_credits.svg')] w-full h-screen bg-cover bg-no-repeat">
-      <Header scaleFactor={scaleFactor}/>
-      <div className="px-[150px] text-white mt-[77px] text-center font-bold">
-        <div className=" font-space-grotesk text-[48px]">Buy Credits</div>
-        <div className="mt-[100px] font-space-grotesk flex text-center justify-center items-center">
-          <span className="text-[24px] font-bold mr-[10px] tracking-[1.5px]">
+    <div className="bg-[url('/public/svg/buy_credits.svg')] w-full h-full bg-cover bg-no-repeat">
+      <Header scaleFactor={scaleFactor} />
+      <div
+        className="text-white text-center font-bold"
+        style={{
+          paddingLeft: `${150 * scaleFactor}px`,
+          paddingRight: `${150 * scaleFactor}px`,
+          marginTop: `${77 * scaleFactor}px`,
+        }}
+      >
+        <div
+          className="font-space-grotesk"
+          style={{ fontSize: `${48 * scaleFactor}px` }}
+        >
+          Buy Credits
+        </div>
+        <div
+          className="font-space-grotesk flex text-center justify-center items-center"
+          style={{ marginTop: `${100 * scaleFactor}px` }}
+        >
+          <span
+            className="font-bold tracking-[1.5px]"
+            style={{
+              fontSize: `${24 * scaleFactor}px`,
+              marginRight: `${10 * scaleFactor}px`,
+            }}
+          >
             $400
           </span>
-          <span className="text-[15px] font-bold text-[#FFFFFF80] uppercase tracking-[1.5px]">
+          <span
+            className="font-bold text-[#FFFFFF80] uppercase tracking-[1.5px]"
+            style={{ fontSize: `${15 * scaleFactor}px` }}
+          >
             Credits/mo
           </span>
         </div>
-        <div className="mt-[60px] flex justify-center">
-          <div className="w-[700px] bg-[#FFFFFF0D] rounded-full h-[15px] dark:bg-gray-700">
+        <div
+          className="flex justify-center"
+          style={{ marginTop: `${60 * scaleFactor}px` }}
+        >
+          <div
+            className="bg-[#FFFFFF0D] rounded-full dark:bg-gray-700"
+            style={{
+              width: `${700 * scaleFactor}px`,
+              height: `${15 * scaleFactor}px`,
+            }}
+          >
             <div
-              className="bg-white h-[15px] rounded-full flex items-center relative"
-              style={{ width: "45%" }}
+              className="bg-white rounded-full flex items-center relative"
+              style={{ width: "45%", height: `${15 * scaleFactor}px` }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="56"
-                height="56"
+                width={56 * scaleFactor}
+                height={56 * scaleFactor}
                 viewBox="0 0 56 56"
                 fill="none"
                 className=" absolute -right-[28px]"
@@ -40,7 +71,7 @@ const BuyCredits = (props) => {
                   cy="28"
                   r="23"
                   fill="white"
-                  fill-opacity="0.15"
+                  fillOpacity="0.15"
                 />
                 <g filter="url(#filter0_d_618_1046)">
                   <circle cx="28" cy="28" r="18" fill="white" />
@@ -59,9 +90,9 @@ const BuyCredits = (props) => {
                     width="56"
                     height="56"
                     filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB"
+                    colorInterpolationFilters="sRGB"
                   >
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix
                       in="SourceAlpha"
                       type="matrix"
@@ -95,46 +126,45 @@ const BuyCredits = (props) => {
                     y2="39.625"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#49CCFA" />
-                    <stop offset="1" stop-color="#FD71AE" />
+                    <stop stopColor="#49CCFA" />
+                    <stop offset="1" stopColor="#FD71AE" />
                   </linearGradient>
                 </defs>
               </svg>
             </div>
           </div>
         </div>
-        <div className="mt-[60px] text-[#64FF8D] font-space-grotesk text-[64px] font-bold">
+        <div
+          className="text-[#64FF8D] font-space-grotesk font-bold"
+          style={{
+            marginTop: `${60 * scaleFactor}px`,
+            fontSize: `${64 * scaleFactor}px`,
+          }}
+        >
           $400/mo
         </div>
-        <div className="mt-[60px] text-white text-[22px] font-poppins uppercase">
+        <div
+          className="text-white font-poppins uppercase"
+          style={{
+            marginTop: `${60 * scaleFactor}px`,
+            fontSize: `${22 * scaleFactor}px`,
+          }}
+        >
           or
         </div>
-        <div className="mt-[60px] flex justify-center">
-          <button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-[278px] h-[85px] rounded-full mt-[50px] flex items-center justify-center text-[15px] text-white uppercase font-space-grotesk font-bold tracking-[1.5px]">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="26"
-              height="25"
-              viewBox="0 0 26 25"
-              fill="none"
-              className="mr-[10px]"
-            >
-              <circle
-                cx="12.5"
-                cy="12.5"
-                r="12"
-                transform="matrix(-1 0 0 1 25.5 0)"
-                stroke="white"
-                strokeOpacity="0.8"
-              />
-              <path
-                d="M7.5 12.5C7.22386 12.5 7 12.7239 7 13C7 13.2761 7.22386 13.5 7.5 13.5V12.5ZM17.8536 13.3536C18.0488 13.1583 18.0488 12.8417 17.8536 12.6464L14.6716 9.46447C14.4763 9.2692 14.1597 9.2692 13.9645 9.46447C13.7692 9.65973 13.7692 9.97631 13.9645 10.1716L16.7929 13L13.9645 15.8284C13.7692 16.0237 13.7692 16.3403 13.9645 16.5355C14.1597 16.7308 14.4763 16.7308 14.6716 16.5355L17.8536 13.3536ZM7.5 13.5H17.5V12.5H7.5V13.5Z"
-                fill="white"
-                fillOpacity="0.8"
-              />
-            </svg>
-            pay as you go
-          </button>
+        <div
+          className="flex justify-center"
+          style={{
+            marginTop: `${60 * scaleFactor}px`,
+          }}
+        >
+          <CompButton
+            title="pay as you go"
+            scaleFactor={scaleFactor}
+            width="278"
+            height="85"
+            size="15"
+          ></CompButton>
         </div>
       </div>
     </div>

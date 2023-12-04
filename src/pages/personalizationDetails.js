@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
@@ -7,6 +7,14 @@ import CompButton from "./compButton";
 
 const PersonalizationDetails = (props) => {
   const scaleFactor = props.scaleFactor;
+  const [leads, setLeads] = useState(0);
+  const [ea, setEa] = useState(0);
+  const onPlusButtonClicked = () => {
+    setEa(ea + 1);
+  };
+  const onMinusButtonClicked = () => {
+    setEa(ea - 1);
+  };
   return (
     <div className="bg-[url('/public/svg/personalization_details.svg')] w-full h-screen bg-cover bg-no-repeat">
       <Header scaleFactor={scaleFactor} />
@@ -121,113 +129,117 @@ const PersonalizationDetails = (props) => {
                 borderWidth: `${1 * scaleFactor}px`,
               }}
             >
-              <div style={{ marginRight: `${15 * scaleFactor}px` }}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={26 * scaleFactor}
-                  height={26 * scaleFactor}
-                  viewBox="0 0 26 26"
-                  fill="none"
-                >
-                  <g filter="url(#filter0_b_405_970)">
-                    <rect
-                      width="26"
-                      height="26"
-                      rx="13"
-                      fill="white"
-                      fillOpacity="0.1"
-                    />
-                    <path
-                      d="M8.66699 13H17.3337"
-                      stroke="white"
-                      strokerinecap="round"
-                      strokerinejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_b_405_970"
-                      x="-100"
-                      y="-100"
-                      width="226"
-                      height="226"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feGaussianBlur
-                        in="BackgroundImageFix"
-                        stdDeviation="50"
+              <button onClick={onMinusButtonClicked}>
+                <div style={{ marginRight: `${15 * scaleFactor}px` }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={26 * scaleFactor}
+                    height={26 * scaleFactor}
+                    viewBox="0 0 26 26"
+                    fill="none"
+                  >
+                    <g filter="url(#filter0_b_405_970)">
+                      <rect
+                        width="26"
+                        height="26"
+                        rx="13"
+                        fill="white"
+                        fillOpacity="0.1"
                       />
-                      <feComposite
-                        in2="SourceAlpha"
-                        operator="in"
-                        result="effect1_backgroundBlur_405_970"
+                      <path
+                        d="M8.66699 13H17.3337"
+                        stroke="white"
+                        strokerinecap="round"
+                        strokerinejoin="round"
                       />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect1_backgroundBlur_405_970"
-                        result="shape"
+                    </g>
+                    <defs>
+                      <filter
+                        id="filter0_b_405_970"
+                        x="-100"
+                        y="-100"
+                        width="226"
+                        height="226"
+                        filterUnits="userSpaceOnUse"
+                        colorInterpolationFilters="sRGB"
+                      >
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feGaussianBlur
+                          in="BackgroundImageFix"
+                          stdDeviation="50"
+                        />
+                        <feComposite
+                          in2="SourceAlpha"
+                          operator="in"
+                          result="effect1_backgroundBlur_405_970"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in="SourceGraphic"
+                          in2="effect1_backgroundBlur_405_970"
+                          result="shape"
+                        />
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              </button>
+              {ea < 10 ? "0" + ea : ea}
+              <button onClick={onPlusButtonClicked}>
+                <div style={{ marginLeft: `${15 * scaleFactor}px` }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={26 * scaleFactor}
+                    height={26 * scaleFactor}
+                    viewBox="0 0 26 26"
+                    fill="none"
+                  >
+                    <g filter="url(#filter0_b_405_965)">
+                      <rect
+                        width="26"
+                        height="26"
+                        rx="13"
+                        fill="white"
+                        fillOpacity="0.1"
                       />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
-              02
-              <div style={{ marginLeft: `${15 * scaleFactor}px` }}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={26 * scaleFactor}
-                  height={26 * scaleFactor}
-                  viewBox="0 0 26 26"
-                  fill="none"
-                >
-                  <g filter="url(#filter0_b_405_965)">
-                    <rect
-                      width="26"
-                      height="26"
-                      rx="13"
-                      fill="white"
-                      fillOpacity="0.1"
-                    />
-                    <path
-                      d="M8.66699 13H17.3337M13.0003 8.66663V17.3333"
-                      stroke="white"
-                      strokerinecap="round"
-                      strokerinejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <filter
-                      id="filter0_b_405_965"
-                      x="-100"
-                      y="-100"
-                      width="226"
-                      height="226"
-                      filterUnits="userSpaceOnUse"
-                      colorInterpolationFilters="sRGB"
-                    >
-                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                      <feGaussianBlur
-                        in="BackgroundImageFix"
-                        stdDeviation="50"
+                      <path
+                        d="M8.66699 13H17.3337M13.0003 8.66663V17.3333"
+                        stroke="white"
+                        strokerinecap="round"
+                        strokerinejoin="round"
                       />
-                      <feComposite
-                        in2="SourceAlpha"
-                        operator="in"
-                        result="effect1_backgroundBlur_405_965"
-                      />
-                      <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect1_backgroundBlur_405_965"
-                        result="shape"
-                      />
-                    </filter>
-                  </defs>
-                </svg>
-              </div>
+                    </g>
+                    <defs>
+                      <filter
+                        id="filter0_b_405_965"
+                        x="-100"
+                        y="-100"
+                        width="226"
+                        height="226"
+                        filterUnits="userSpaceOnUse"
+                        colorInterpolationFilters="sRGB"
+                      >
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feGaussianBlur
+                          in="BackgroundImageFix"
+                          stdDeviation="50"
+                        />
+                        <feComposite
+                          in2="SourceAlpha"
+                          operator="in"
+                          result="effect1_backgroundBlur_405_965"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in="SourceGraphic"
+                          in2="effect1_backgroundBlur_405_965"
+                          result="shape"
+                        />
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              </button>
             </div>
             <div
               className="font-poppins"
@@ -325,11 +337,14 @@ const PersonalizationDetails = (props) => {
         <div style={{ marginTop: `${70 * scaleFactor}px` }}>
           <div
             className="flex flex-col justify-center"
-            style={{ paddingTop: `${50 * scaleFactor}px`}}
+            style={{ paddingTop: `${50 * scaleFactor}px` }}
           >
             <div
               className="text-start text-[#FFFFFF80]"
-              style={{ fontSize: `${15 * scaleFactor}px`, paddingLeft: `${100 * scaleFactor}px`  }}
+              style={{
+                fontSize: `${15 * scaleFactor}px`,
+                paddingLeft: `${100 * scaleFactor}px`,
+              }}
             >
               Enter URL
             </div>

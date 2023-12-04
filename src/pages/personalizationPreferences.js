@@ -3,8 +3,6 @@ import Header from "./header";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompTitle from "./compTitle";
-import CompInput from "./compInput";
-import CompButton from "./compButton";
 
 const PersonalizationPreferences = (props) => {
   const scaleFactor = props.scaleFactor;
