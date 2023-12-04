@@ -46,8 +46,6 @@ const signInWithGoogle = async (flag = 0) => {  //flag==0 then signin flag==1 th
     } else {
       result = "failed";
     }
-    console.log(auth);
-    console.log(user.uid);
   } catch (err) {
     console.error(err);
     result = err;
@@ -56,7 +54,6 @@ const signInWithGoogle = async (flag = 0) => {  //flag==0 then signin flag==1 th
 };
 const logInWithEmailAndPassword = async (email, password) => {
   let result;
-  console.log(auth);
   try {
     await signInWithEmailAndPassword(auth, email, password);
     result = "success";

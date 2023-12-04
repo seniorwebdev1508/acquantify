@@ -26,7 +26,6 @@ const Login = (props) => {
   };
   const onLoginWithGoogle = async () => {
     const result = await signInWithGoogle(0);
-    console.log(result);
     if (result === "success") {
       navigate("/is");
     } else {
