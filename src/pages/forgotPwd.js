@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./header";
+import Footer from "./footer";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompButton from "./compButton";
@@ -126,6 +127,7 @@ const ForgotPwd = (props) => {
           </div>
         </div>
       </div>
+      <Footer scaleFactor={scaleFactor}/>
     </div>
   );
 };

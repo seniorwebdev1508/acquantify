@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./header";
+import Footer from "./footer";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompButton from "./compButton";
@@ -167,6 +168,7 @@ const BuyCredits = (props) => {
           ></CompButton>
         </div>
       </div>
+      <Footer scaleFactor={scaleFactor}/>
     </div>
   );
 };

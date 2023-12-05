@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./header";
+import Footer from "./footer";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompTitle from "./compTitle";
@@ -405,6 +406,7 @@ const PersonalizationDetails = (props) => {
           ></CompButton>
         </div>
       </div>
+      <Footer scaleFactor={scaleFactor}/>
     </div>
   );
 };

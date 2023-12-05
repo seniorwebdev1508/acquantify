@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./header";
+import Footer from "./footer";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import { useNavigate, Link } from "react-router-dom";
@@ -191,6 +192,7 @@ const SignUp = (props) => {
           </div>
         </div>
       </div>
+      <Footer scaleFactor={scaleFactor}/>
     </div>
   );
 };

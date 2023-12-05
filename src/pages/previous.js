@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./header";
+import Footer from "./footer";
 import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompTitle from "./compTitle";
@@ -213,6 +214,7 @@ const PreviousAcquanitifications = (props) => {
           </div>
         </div>
       </div>
+      <Footer scaleFactor={scaleFactor}/>
     </div>
   );
 };
