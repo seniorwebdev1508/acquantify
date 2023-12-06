@@ -1,55 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./header";
-import Footer from './footer';
+import Footer from "./footer";
 import CompButton from "./compButton";
 import CompTitle from "./compTitle";
+import axios from "axios";
 
 const ImportSheet = (props) => {
   const scaleFactor = props.scaleFactor;
 
   const [file, setFile] = useState();
-
   const [isLoaded, setIsLoaded] = useState(false);
-
   const [array, setArray] = useState([]);
+  const [csvData, setCsvData] = useState([]);
+  const [headers, setHeaders] = useState([]);
 
-  const fileReader = new FileReader();
+  // const fileReader = new FileReader();
+
+  useEffect(() => {
+    console.log("asdf");
+  }, []);
 
   const handleOnChange = (e) => {
-    setFile(e.target.files[0]);
+    setFile(e.target.value);
   };
 
-  const csvFileToArray = (string) => {
-    const csvHeader = string.slice(0, string.indexOf("\n")).split(",");
-    const csvRows = string.slice(string.indexOf("\n") + 1).split("\n");
-
-    const array = csvRows.map((i) => {
-      const values = i.split(",");
-      const obj = csvHeader.reduce((object, header, index) => {
-        object[header] = values[index];
-        return object;
-      }, {});
-      return obj;
-    });
-
-    setArray(array);
-  };
+  function parseCSV(csvText) {
+    const rows = csvText.split(/\r?\n/); // Split CSV text into rows, handling '\r' characters
+    setHeaders(rows[0].split(",")); // Extract headers (assumes the first row is the header row)
+    const data = []; // Initialize an array to store parsed data
+    for (let i = 1; i < rows.length; i++) {
+      const rowData = rows[i].split(","); // Split the row, handling '\r' characters
+      const rowObject = {};
+      for (let j = 0; j < headers.length; j++) {
+        rowObject[headers[j]] = rowData[j];
+      }
+      data.push(rowObject);
+    }
+    return data;
+  }
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    if (file) {
-      fileReader.onload = function (event) {
-        const csvOutput = event.target.result;
-        csvFileToArray(csvOutput);
+    if (!isLoaded) {
+      if (file) {
+        axios.get(file).then((response) => {
+          const parsedData = parseCSV(response.data);
+          setCsvData(parsedData);
 
-        setIsLoaded(true);
-      };
-
-      console.log(array);
-
-      fileReader.readAsText(file);
+          setIsLoaded(true);
+        });
+      }
+    } else {
     }
+  };
+
+  const handleOnPlus = (e) => {
+    e.preventDefault();
+
+    console.log(csvData);
+    console.log(headers);
   };
 
   return (
@@ -79,10 +89,7 @@ const ImportSheet = (props) => {
               style={{ marginTop: `${15 * scaleFactor}px` }}
             >
               <input
-                type="file"
-                name="url"
-                id="csvFileInput"
-                accept=".csv"
+                type="text"
                 onChange={handleOnChange}
                 style={{
                   border: `${1 * scaleFactor}px`,
@@ -153,7 +160,7 @@ const ImportSheet = (props) => {
               }}
             >
               <table
-                className="text-left text-white font-poppins w-full "
+                className="text-left text-white w-full "
                 style={{
                   fontSize: `${18 * scaleFactor}px`,
                 }}
@@ -187,24 +194,23 @@ const ImportSheet = (props) => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="font-poppins">
                   <tr>
-                    <th
-                      scope="row"
+                    <td
                       style={{
                         paddingLeft: `${60 * scaleFactor}px`,
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      Apple MacBook Pro 17"
-                    </th>
+                      Email Address
+                    </td>
                     <td
                       style={{
                         paddingLeft: `${241 * scaleFactor}px`,
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      1
+                      EmailAddress
                     </td>
                     <td
                       style={{
@@ -212,26 +218,25 @@ const ImportSheet = (props) => {
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      $2999
+                      johndoe@gmail.com
                     </td>
                   </tr>
                   <tr>
-                    <th
-                      scope="row"
+                    <td
                       style={{
                         paddingLeft: `${60 * scaleFactor}px`,
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      Microsoft Surface Pro
-                    </th>
+                      First Name
+                    </td>
                     <td
                       style={{
                         paddingLeft: `${241 * scaleFactor}px`,
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      1
+                      First Name
                     </td>
                     <td
                       style={{
@@ -239,26 +244,25 @@ const ImportSheet = (props) => {
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      $1999
+                      Mark
                     </td>
                   </tr>
                   <tr>
-                    <th
-                      scope="row"
+                    <td
                       style={{
                         paddingLeft: `${60 * scaleFactor}px`,
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      Magic Mouse 2
-                    </th>
+                      Last Name
+                    </td>
                     <td
                       style={{
                         paddingLeft: `${241 * scaleFactor}px`,
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      1
+                      Last Name
                     </td>
                     <td
                       style={{
@@ -266,7 +270,175 @@ const ImportSheet = (props) => {
                         paddingTop: `${60 * scaleFactor}px`,
                       }}
                     >
-                      $99
+                      Dela Cruz
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      style={{
+                        paddingLeft: `${60 * scaleFactor}px`,
+                        paddingTop: `${60 * scaleFactor}px`,
+                      }}
+                    >
+                      <button
+                        onClick={handleOnPlus}
+                        style={{
+                          position: "absolute",
+                          marginLeft: `${-48 * scaleFactor}px`,
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={26 * scaleFactor}
+                          height={26 * scaleFactor}
+                          viewBox="0 0 26 26"
+                          fill="none"
+                        >
+                          <g filter="url(#filter0_b_405_408)">
+                            <rect
+                              width="26"
+                              height="26"
+                              rx="13"
+                              fill="white"
+                              fillOpacity="0.1"
+                            />
+                            <path
+                              d="M8.6665 13.0001H17.3332M12.9998 8.66675V17.3334"
+                              stroke="white"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </g>
+                          <defs>
+                            <filter
+                              id="filter0_b_405_408"
+                              x="-100"
+                              y="-100"
+                              width="226"
+                              height="226"
+                              filterUnits="userSpaceOnUse"
+                              colorInterpolationFilters="sRGB"
+                            >
+                              <feFlood
+                                floodOpacity="0"
+                                result="BackgroundImageFix"
+                              />
+                              <feGaussianBlur
+                                in="BackgroundImageFix"
+                                stdDeviation="50"
+                              />
+                              <feComposite
+                                in2="SourceAlpha"
+                                operator="in"
+                                result="effect1_backgroundBlur_405_408"
+                              />
+                              <feBlend
+                                mode="normal"
+                                in="SourceGraphic"
+                                in2="effect1_backgroundBlur_405_408"
+                                result="shape"
+                              />
+                            </filter>
+                          </defs>
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        className="inline-flex justify-center"
+                        id="menu-button"
+                        aria-expanded="true"
+                        aria-haspopup="true"
+                      >
+                        Column Name
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="7"
+                          height="5"
+                          viewBox="0 0 7 5"
+                          fill="none"
+                          style={{
+                            marginLeft: `${350 * scaleFactor}px`,
+                            marginTop: `${11 * scaleFactor}px`,
+                            position: "absolute",
+                          }}
+                        >
+                          <path
+                            d="M3.14699 4.35354C3.34224 4.54882 3.65932 4.54882 3.85457 4.35354L6.85356 1.35413C7.04881 1.15886 7.04881 0.84173 6.85356 0.646456C6.65832 0.451181 6.34124 0.451181 6.14599 0.646456L3.5 3.29281L0.854011 0.648018C0.658764 0.452743 0.341682 0.452743 0.146435 0.648018C-0.0488118 0.843292 -0.0488118 1.16042 0.146435 1.35569L3.14543 4.35511L3.14699 4.35354Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <span
+                          style={{
+                            position: "absolute",
+                            width: `${250 * scaleFactor}px`,
+                            height: `${1 * scaleFactor}px`,
+                            marginLeft: `${110 * scaleFactor}px`,
+                            marginTop: `${30 * scaleFactor}px`,
+                          }}
+                          className="bg-[#FFFFFF0D]"
+                        ></span>
+                      </button>
+                    </td>
+                    <td
+                      style={{
+                        paddingLeft: `${241 * scaleFactor}px`,
+                        paddingTop: `${60 * scaleFactor}px`,
+                      }}
+                    >
+                      <button
+                        type="button"
+                        className="inline-flex justify-center"
+                        id="menu-button"
+                        aria-expanded="true"
+                        aria-haspopup="true"
+                      >
+                        Select Fields
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="7"
+                          height="5"
+                          viewBox="0 0 7 5"
+                          fill="none"
+                          style={{
+                            marginLeft: `${350 * scaleFactor}px`,
+                            marginTop: `${11 * scaleFactor}px`,
+                            position: "absolute",
+                          }}
+                        >
+                          <path
+                            d="M3.14699 4.35354C3.34224 4.54882 3.65932 4.54882 3.85457 4.35354L6.85356 1.35413C7.04881 1.15886 7.04881 0.84173 6.85356 0.646456C6.65832 0.451181 6.34124 0.451181 6.14599 0.646456L3.5 3.29281L0.854011 0.648018C0.658764 0.452743 0.341682 0.452743 0.146435 0.648018C-0.0488118 0.843292 -0.0488118 1.16042 0.146435 1.35569L3.14543 4.35511L3.14699 4.35354Z"
+                            fill="white"
+                          />
+                        </svg>
+                        <span
+                          style={{
+                            position: "absolute",
+                            width: `${250 * scaleFactor}px`,
+                            height: `${1 * scaleFactor}px`,
+                            marginLeft: `${110 * scaleFactor}px`,
+                            marginTop: `${30 * scaleFactor}px`,
+                          }}
+                          className="bg-[#FFFFFF0D]"
+                        ></span>
+                      </button>
+                    </td>
+                    <td
+                      style={{
+                        paddingLeft: `${327 * scaleFactor}px`,
+                        paddingTop: `${60 * scaleFactor}px`,
+                      }}
+                    >
+                      Sample
+                      <span
+                        style={{
+                          position: "absolute",
+                          width: `${250 * scaleFactor}px`,
+                          height: `${1 * scaleFactor}px`,
+                          marginLeft: `${-80 * scaleFactor}px`,
+                          marginTop: `${30 * scaleFactor}px`,
+                        }}
+                        className="bg-[#FFFFFF0D]"
+                      ></span>
                     </td>
                   </tr>
                 </tbody>
@@ -277,7 +449,7 @@ const ImportSheet = (props) => {
 
         <div className="flex justify-center">
           <CompButton
-            style={{ marginTop: `${50 * scaleFactor}px` }}
+            style={{ marginTop: `${100 * scaleFactor}px` }}
             title="continue"
             width="237"
             height="85"
@@ -289,7 +461,7 @@ const ImportSheet = (props) => {
           />
         </div>
       </div>
-      <Footer scaleFactor={scaleFactor}/>
+      <Footer scaleFactor={scaleFactor} />
     </div>
   );
 };

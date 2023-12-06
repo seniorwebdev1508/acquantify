@@ -5,9 +5,12 @@ import "@fontsource/poppins";
 import "@fontsource/space-grotesk";
 import CompTitle from "./compTitle";
 import CompButton from "./compButton";
+import { useNavigate } from "react-router-dom";
 
 const Success = (props) => {
   const scaleFactor = props.scaleFactor;
+  const navigate = useNavigate();
+
   return (
     <div
       className="bg-[url('/public/svg/success.svg')] w-full h-screen bg-cover bg-no-repeat"
@@ -68,6 +71,7 @@ const Success = (props) => {
               width="328"
               height="85"
               scaleFactor={scaleFactor}
+              onClick={navigate("/is")}
             ></CompButton>
           </div>
         </div>
