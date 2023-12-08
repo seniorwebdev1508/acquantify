@@ -4,9 +4,11 @@ import Footer from "./footer";
 import CompButton from "./compButton";
 import CompTitle from "./compTitle";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ImportSheet = (props) => {
   const scaleFactor = props.scaleFactor;
+  const navigate = useNavigate();
 
   const [file, setFile] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -52,6 +54,7 @@ const ImportSheet = (props) => {
         });
       }
     } else {
+      navigate("/pp");
     }
   };
 
@@ -61,6 +64,18 @@ const ImportSheet = (props) => {
     console.log(csvData);
     console.log(headers);
   };
+
+  const handleOnCopy = async (e) => {
+    e.preventDefault();
+
+    try {
+      await navigator.clipboard.writeText(file);
+      alert("Copied to clipboard!");
+    } catch (err) {
+      console.log("Unable to copy to clipboard:", err);
+      alert("Copy to clipboard failed!");
+    }
+  }
 
   return (
     <div className="bg-[url('/public/svg/import_page.svg')] w-full h-full bg-cover bg-no-repeat">
@@ -102,7 +117,7 @@ const ImportSheet = (props) => {
                 }}
                 className="block rounded-full w-full border-solid border-white text-white placeholder:text-gray-400 sm:leading-6 bg-[#ffffff1c]"
               />
-              <div className="absolute inset-y-0 right-7 flex items-center cursor-pointer">
+              <div className="absolute inset-y-0 right-7 flex items-center cursor-pointer" onClick={handleOnCopy}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 25 21"

@@ -11,6 +11,11 @@ import {
 } from "firebase/auth";
 import {
   getFirestore,
+  query,
+  getDocs,
+  collection,
+  where,
+  addDoc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,7 +29,7 @@ const firebaseConfig = {
   storageBucket: "acquantify.appspot.com",
   messagingSenderId: "200954215376",
   appId: "1:200954215376:web:4f6f8dc1c1110a34e197d5",
-  measurementId: "G-9XCHKM6JQS"
+  measurementId: "G-9XCHKM6JQS",
 };
 
 // Initialize Firebase
@@ -32,20 +37,32 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
-const signInWithGoogle = async (flag = 0) => {  //flag==0 then signin flag==1 then signup
+
+const signInWithGoogle = async (flag = 0) => {
+  //flag==0 then signin flag==1 then signup
   let result;
-  console.log(googleProvider);
+  console.log(auth);
+  console.log(getAuth());
   try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
-    if (flag === 1) {
-      result = "success";
-    }
-    else if (flag === 0 && auth.currentUser.uid === user.uid) {
-      result = "success";
-    } else {
-      result = "failed";
-    }
+    await signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(credential);
+        const token = credential.accessToken;
+        console.log(token);
+        const user = result.user;
+        console.log(user);
+        result = "success";
+      })
+      .catch((error) => {
+        result = error;
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
   } catch (err) {
     console.error(err);
     result = err;

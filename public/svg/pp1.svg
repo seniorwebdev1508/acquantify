@@ -1,0 +1,14 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="cicon" filter="url(#filter0_b_405_485)">
+<rect width="200" height="200" rx="25" fill="white" fill-opacity="0.1"/>
+<path id="Vector" d="M110.483 84.4943H117.23M110.483 97.9886H117.23M100.362 111.483H83.4943M130.724 97.9886V77.7472C130.724 74.0208 127.704 71 123.977 71H76.7472C73.0208 71 70 74.0208 70 77.7472V118.23C70 121.957 73.0208 124.977 76.7472 124.977H100.362M83.4943 84.4943V97.9886H96.9886V84.4943H83.4943Z" stroke="#FD71AE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_b_405_485" x="-100" y="-100" width="400" height="400" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="50"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_405_485"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_405_485" result="shape"/>
+</filter>
+</defs>
+</svg>
