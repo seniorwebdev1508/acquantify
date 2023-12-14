@@ -41,8 +41,12 @@ const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async (flag = 0) => {
   //flag==0 then signin flag==1 then signup
   let result;
+  console.log ("signInWithGoogle~~~~~~~~~~~~~~~");
   console.log(auth);
+  console.log ("0000000000000000000000000000");
   console.log(getAuth());
+  console.log ("signInWithGoogle~~~~~~~~~~~~~~~");
+
   try {
     await signInWithPopup(auth, googleProvider)
       .then((result) => {
@@ -53,6 +57,7 @@ const signInWithGoogle = async (flag = 0) => {
         const user = result.user;
         console.log(user);
         result = "success";
+        console.log ("success");
       })
       .catch((error) => {
         result = error;

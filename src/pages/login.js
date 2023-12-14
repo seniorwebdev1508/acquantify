@@ -104,7 +104,7 @@ const Login = (props) => {
                   marginLeft: `${23 * scaleFactor}px`,
                 }}
               >
-                Login with Google
+                Continue with Google
               </div>
             </button>
             <div
