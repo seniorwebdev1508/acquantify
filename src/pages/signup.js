@@ -31,13 +31,9 @@ const SignUp = (props) => {
     }
   };
   const onSignUpWithGoogle = async (e) => {
-    // e.preventDefault();
-    console.log("asdf");
-    const result = await signInWithGoogle(1); // 1 = google
-    console.log(result);
-    console.log("asdf");
+    const result = await signInWithGoogle();
     if (result === "success") {
-      navigate("/");
+      navigate("/is");
     } else {
       alert(result);
     }
@@ -112,7 +108,7 @@ const SignUp = (props) => {
                   marginLeft: `${23 * scaleFactor}px`,
                 }}
               >
-                Sign-up with Google
+                Continue with Google
               </div>
             </button>
             <div

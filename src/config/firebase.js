@@ -38,63 +38,58 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
-const signInWithGoogle = async (flag = 0) => {
-  //flag==0 then signin flag==1 then signup
-  let result;
-  console.log ("signInWithGoogle~~~~~~~~~~~~~~~");
-  console.log(auth);
-  console.log ("0000000000000000000000000000");
-  console.log(getAuth());
-  console.log ("signInWithGoogle~~~~~~~~~~~~~~~");
+const signInWithGoogle = async () => {
 
-  try {
-    await signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        console.log(credential);
-        const token = credential.accessToken;
-        console.log(token);
-        const user = result.user;
-        console.log(user);
-        result = "success";
-        console.log ("success");
-      })
-      .catch((error) => {
-        result = error;
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-      });
-  } catch (err) {
-    console.error(err);
-    result = err;
-  }
-  return result;
+  return new Promise ((resolve, reject) => {
+    signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      resolve ("success");
+    })
+    .catch((error) => {
+      reject ("false");
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    });
+  });
+
 };
 const logInWithEmailAndPassword = async (email, password) => {
-  let result;
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    result = "success";
-  } catch (err) {
-    console.error(err);
-    result = err;
-  }
-  return result;
+
+  return new Promise ((resolve, reject) => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then ((userCredential) => {
+        console.log (userCredential);
+        const user = userCredential.user;
+        resolve ("success");
+      })
+      .catch ((err) => {
+        console.log (err);
+        reject ("false");
+      });
+  });
+
 };
 const registerWithEmailAndPassword = async (name, email, password) => {
   let result;
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    result = "success";
-  } catch (err) {
-    console.error(err);
-    result = "err";
-  }
-  return result;
+
+  return new Promise ((resolve, reject) => {
+      createUserWithEmailAndPassword(auth, email, password)
+      .then ((userCredential) => {
+        const user = userCredential.user;
+        resolve ('success');
+      })
+      .catch ((err) => {
+        console.log (err);
+        reject ("false");
+      });
+  });
 };
 const sendPasswordReset = async (email) => {
   try {

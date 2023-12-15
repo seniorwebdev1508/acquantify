@@ -18,15 +18,15 @@ const Login = (props) => {
 
   const onLogin = async (e) => {
     const result = await logInWithEmailAndPassword(email, password);
-    console.log(result);
     if (result === "success") {
       navigate("/is");
     } else {
       alert(result);
     }
   };
+  
   const onLoginWithGoogle = async () => {
-    const result = await signInWithGoogle(0);
+    const result = await signInWithGoogle();
     if (result === "success") {
       navigate("/is");
     } else {
